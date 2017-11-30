@@ -167,6 +167,19 @@ void B4cDetectorConstruction::DefineMaterials()
         FR4->AddMaterial(TBBPA, 0.07);
         FR4->AddMaterial(nistManager->FindOrBuildMaterial("G4_Cu"),0.01);
 
+        //Steel Material
+        G4double SteelDensity=8.027*g/cm3;
+        G4int Steelcomponents=5;
+        G4Material * Steel=new G4Material("Steel", SteelDensity, Steelcomponents);
+
+        Steel->AddMaterial(nistManager->FindOrBuildMaterial("G4_Fe"),0.709 );
+        Steel->AddMaterial(nistManager->FindOrBuildMaterial("G4_Cr"),0.18 );
+        Steel->AddMaterial(nistManager->FindOrBuildMaterial("G4_Ni"), 0.10);
+        Steel->AddMaterial(nistManager->FindOrBuildMaterial("G4_Mn"), 0.01);
+        Steel->AddMaterial(nistManager->FindOrBuildMaterial("G4_C"), 0.001);
+
+
+
 
         // Liquid argon material
         G4double a; // mass of a mole;
@@ -187,17 +200,12 @@ void B4cDetectorConstruction::DefineMaterials()
 
 G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
 {
-        // Geometry parameters
 
-        // auto worldSizeXY = 1.2 * GetInst().GetcalorSizeXY();
-        //auto worldSizeZ  = 1.2 * GetInst().GetcalorThickness();
-
-        // Get materials
         auto defaultMaterial = G4Material::GetMaterial("Galactic");
         auto absorberMaterial = G4Material::GetMaterial("G4_Pb");
         auto gapMaterial = G4Material::GetMaterial("G4_POLYSTYRENE");
-        auto crystalMaterial = G4Material::GetMaterial("LYSO");
-        auto pcbMaterial = G4Material::GetMaterial("FR4");
+
+        auto PVesselMaterial = G4Material::GetMaterial("Steel");
 
         if ( !defaultMaterial || !absorberMaterial || !gapMaterial ) {
                 G4ExceptionDescription msg;
@@ -243,11 +251,11 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
                 defaultMaterial,   // its material
                 "Detector");    // its name
 
-        G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetDetectorThickness()/2)*mm);
+        G4ThreeVector segD(0*mm,0*mm,(GetInst().GetDetectorThickness()/2)*mm);
 
         new G4PVPlacement(
                 0,                 // no rotation
-                seg1,   // at (0,0,0)
+                segD,
                 DetectorLV,           // its logical volume
                 "Detector",     // its name
                 worldLV,           // its mother  volume
@@ -268,11 +276,11 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
                 defaultMaterial,           // its material
                 "CalorimeterInside");            // its name
 
-        G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetInnercalorThickness()/2)*mm);
+        G4ThreeVector segI(0*mm,0*mm,(-GetInst().GetDetectorThickness()/2+GetInst().GetInnercalorThickness()/2)*mm);
 
         new G4PVPlacement(
                 0,                         // no rotation
-                seg1,           // at (0,0,0)
+                segI,
                 calorInsideLV,                   // its logical volume
                 "CalorimeterInside",             // its name
                 DetectorLV,                   // its mother  volume
@@ -284,19 +292,19 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
         //
         auto PressureVesselS
                 = new G4Box("PressureVessel",                         // its name
-                            GetInst().GetcalorSizeXY()/2, GetInst().GetcalorSizeXY()/2, GetInst().GetcalorThickness()/2);                         // its size
+                            GetInst().GetcalorSizeXY()/2, GetInst().GetcalorSizeXY()/2, GetInst().GetPvesselThickness()/2);                         // its size
 
         auto PressureVesselLV
                 = new G4LogicalVolume(
                 PressureVesselS,                              // its solid
-                defaultMaterial,                           // its material
+                PVesselMaterial,                           // its material
                 "PressureVessel");                            // its name
 
-        G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetInnercalorThickness()+(GetInst().GetPvesselThickness())/2)*mm);
+        G4ThreeVector segP(0*mm,0*mm,(-GetInst().GetDetectorThickness()/2+GetInst().GetInnercalorThickness()+GetInst().GetPvesselThickness()/2)*mm);
 
         new G4PVPlacement(
                 0,                                         // no rotation
-                seg1,                           // at (0,0,0)
+                segP,
                 PressureVesselLV,                                   // its logical volume
                 "PressureVessel",                             // its name
                 DetectorLV,                                   // its mother  volume
@@ -317,11 +325,11 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
                 defaultMaterial,           // its material
                 "CalorimeterOutside");            // its name
 
-        G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetInnercalorThickness()+GetInst().GetPvesselThickness()+(GetInst().GetOutercalorThickness()/2))*mm);
+        G4ThreeVector segO(0*mm,0*mm,(-GetInst().GetDetectorThickness()/2+GetInst().GetInnercalorThickness()+GetInst().GetPvesselThickness()+GetInst().GetOutercalorThickness()/2)*mm);
 
         new G4PVPlacement(
                 0,                         // no rotation
-                seg1,           // at (0,0,0)
+                segO,
                 calorOutsideLV,                   // its logical volume
                 "CalorimeterOutside",             // its name
                 DetectorLV,                   // its mother  volume
@@ -532,14 +540,14 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
         // print parameters
         //
 
-        G4cout
-                << G4endl
-                << "------------------------------------------------------------" << G4endl
-                << "---> The calorimeter is " << GetInst().GetfNofLayers() << " layers of: [ "
-                << GetInst().GetabsoThickness()/mm << "mm of " << absorberMaterial->GetName()
-                << " + "
-                << GetInst().GetgapThickness()/mm << "mm of " << gapMaterial->GetName() << " ] " << G4endl
-                << "------------------------------------------------------------" << G4endl;
+        // G4cout
+        //         << G4endl
+        //         << "------------------------------------------------------------" << G4endl
+        //         << "---> The calorimeter is " << GetInst().GetfNofLayers() << " layers of: [ "
+        //         << GetInst().GetabsoThickness()/mm << "mm of " << absorberMaterial->GetName()
+        //         << " + "
+        //         << GetInst().GetgapThickness()/mm << "mm of " << gapMaterial->GetName() << " ] " << G4endl
+        //         << "------------------------------------------------------------" << G4endl;
 
         //
         // Visualization attributes
@@ -548,7 +556,7 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
 
         auto simpleBoxVisAtt= new G4VisAttributes(G4Colour(1.0,1.0,1.0));
         simpleBoxVisAtt->SetVisibility(true);
-        calorLV->SetVisAttributes(simpleBoxVisAtt);
+        DetectorLV->SetVisAttributes(simpleBoxVisAtt);
 
         //
         // Always return the physical World

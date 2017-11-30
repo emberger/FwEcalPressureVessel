@@ -69,8 +69,6 @@ int main(int argc,char** argv)
 
   //OPen ROOT file
 
-
-std::cout<<GetInst().GetfNofLayers()<<std::endl;
 	// Evaluate arguments
 
   if ( argc > 7 ) {

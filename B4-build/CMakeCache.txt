@@ -198,9 +198,6 @@ ROOT_Cint_LIBRARY:FILEPATH=/remote/pcilc9/software/ubu1604/root-5.34.36/lib/libC
 //Path to a library.
 ROOT_Core_LIBRARY:FILEPATH=/remote/pcilc9/software/ubu1604/root-5.34.36/lib/libCore.so
 
-//The directory containing a CMake configuration file for ROOT.
-ROOT_DIR:PATH=ROOT_DIR-NOTFOUND
-
 //Path to a library.
 ROOT_Gpad_LIBRARY:FILEPATH=/remote/pcilc9/software/ubu1604/root-5.34.36/lib/libGpad.so
 

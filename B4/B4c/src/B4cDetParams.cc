@@ -20,10 +20,17 @@ void DetParams::InitDet(){
 								InnercalorThickness=fNofInnerLayers*InnerlayerThickness;
 								OutercalorThickness=fNofOuterLayers*OuterlayerThickness;
 
+
+
 								InnertilesPerLayer=nofInnerTilesY*nofInnerTilesX;
 								OutertilesPerLayer=nofOuterTilesX*nofOuterTilesY;
 
 								DetectorThickness=InnercalorThickness+OutercalorThickness+PvesselThickness;
+
+								std::cout<<InnercalorThickness<<std::endl;
+								std::cout<<OutercalorThickness<<std::endl;
+								std::cout<<PvesselThickness<<std::endl;
+								std::cout<<DetectorThickness<<std::endl;
 
 								WorldSizeXY=4.0 * calorSizeXY;
 								WorldSizeZ=4.0 * calorSizeXY;
@@ -33,44 +40,44 @@ void DetParams::InitDet(){
 
 
 
-void DetParams::SetfNofLayers(G4double nla){
-								fNofOutertileLayers=nla;
+void DetParams::SetfNofOuterLayers(G4double nla){
+								fNofOuterLayers=nla;
 }
 
-G4double DetParams::GetfNofLayers(){
-								return fNofOutertileLayers;
+G4double DetParams::GetfNofOuterLayers(){
+								return fNofOuterLayers;
 }
 
-void DetParams::SettileLenX(G4double tx){
-								OutertiletileLenX=tx;
+void DetParams::SetOutertileLenX(G4double tx){
+								OutertileLenX=tx;
 }
 
-G4double DetParams::GettileLenX(){
-								return OutertiletileLenX;
+G4double DetParams::GetOutertileLenX(){
+								return OutertileLenX;
 }
 
-void DetParams::SettileLenY(G4double ty){
-								OutertiletileLenY=ty;
+void DetParams::SetOutertileLenY(G4double ty){
+								OutertileLenY=ty;
 }
 
-G4double DetParams::GettileLenY(){
-								return OutertiletileLenY;
+G4double DetParams::GetOutertileLenY(){
+								return OutertileLenY;
 }
 
-void DetParams::SetabsoThickness(G4double abso){
-								OutertileabsoThickness=abso;
+void DetParams::SetOuterabsoThickness(G4double abso){
+								OuterabsoThickness=abso;
 }
 
-G4double DetParams::GetabsoThickness(){
-								return OutertileabsoThickness;
+G4double DetParams::GetOuterabsoThickness(){
+								return OuterabsoThickness;
 }
 
-void DetParams::SetgapThickness(G4double gap){
-								OutertilegapThickness=gap;
+void DetParams::SetOutergapThickness(G4double gap){
+								OutergapThickness=gap;
 }
 
-G4double DetParams::GetgapThickness(){
-								return OutertilegapThickness;
+G4double DetParams::GetOutergapThickness(){
+								return OutergapThickness;
 }
 
 G4double DetParams::GetnofOuterTilesX(){

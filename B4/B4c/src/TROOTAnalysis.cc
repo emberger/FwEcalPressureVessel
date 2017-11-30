@@ -30,26 +30,46 @@ TROOTAnalysis::TROOTAnalysis(std::unique_ptr<TChain> &ch,Double_t prodist) :
 
         EcalTree->GetEntry(0);
 
-        GapThickness=Cevent->GapThickness();
-        AbsoThickness=Cevent->AbsoThickness();
-        tiledimX=Cevent->TilesizeX();
-        tiledimY=Cevent->TilesizeY();
-        calsizeXY=Cevent->calsizeXY();
-        nofLayers=Cevent->NumberOfLayers();
-        absofirst=Cevent->GetAbsFirst();
+        InnerGapThickness=Cevent->InnerGapThickness();
+        InnerAbsoThickness=Cevent->InnerAbsoThickness();
+        InnertiledimX=Cevent->InnerTilesizeX();
+        InnertiledimY=Cevent->InnerTilesizeY();
+        nofInnerLayers=Cevent->NumberOfInnerLayers();
+        Innerabsofirst=Cevent->GetInnerAbsFirst();
+
+
+        OuterGapThickness=Cevent->OuterGapThickness();
+        OuterAbsoThickness=Cevent->OuterAbsoThickness();
+        OutertiledimX=Cevent->OuterTilesizeX();
+        OutertiledimY=Cevent->OuterTilesizeY();
+        nofOuterLayers=Cevent->NumberOfOuterLayers();
+        Outerabsofirst=Cevent->GetOuterAbsFirst();
+
         gunposition=Cevent->GunPos();
+
+        calsizeXY=Cevent->calsizeXY();
+        PVesselThickness=Cevent->PVesselThickness();
+
+
         TVector3 true_direction = Cevent->MomentumPh1();
 
-        std::cout<<"Absorber thickness is "<<AbsoThickness<<"mm"<<std::endl;
-        std::cout<<"Scintillator thickness is "<<GapThickness<<"mm"<<std::endl;
-        std::cout<<"Tilesize is "<<tiledimX<<"*"<<tiledimY<<"mm^2"<<std::endl;
-        std::cout << std::boolalpha;
-        std::cout<<"AbsorberFirst: "<<absofirst<<std::endl;
+        //
+        // std::cout<<"Absorber thickness is "<<AbsoThickness<<"mm"<<std::endl;
+        // std::cout<<"Scintillator thickness is "<<GapThickness<<"mm"<<std::endl;
+        // std::cout<<"Tilesize is "<<tiledimX<<"*"<<tiledimY<<"mm^2"<<std::endl;
+        // std::cout << std::boolalpha;
+        // std::cout<<"AbsorberFirst: "<<absofirst<<std::endl;
 
-        histsizeX=calsizeXY/tiledimX;
-        histsizeY=calsizeXY/tiledimY;
-        histsizeZ=nofLayers;
-
+        if(InnertiledimX<OutertiledimX) {
+                histsizeX=calsizeXY/InnertiledimX;
+                histsizeY=calsizeXY/InnertiledimY;
+                histsizeZ=nofInnerLayers+nofOuterLayers;
+        }
+        else{
+                histsizeX=calsizeXY/OutertiledimX;
+                histsizeY=calsizeXY/OutertiledimY;
+                histsizeZ=nofInnerLayers+nofOuterLayers;
+        }
         std::unique_ptr<TH2D> _h1(new TH2D("h1", "h1", histsizeX+1,-0.5,histsizeX+0.5,histsizeY+1,-0.5,histsizeY+0.5));
         std::unique_ptr<TH2D> _h2(new TH2D("h2", "h2", histsizeX+1,-0.5,histsizeX+0.5,histsizeY+1,-0.5,histsizeY+0.5));
 
@@ -113,25 +133,25 @@ Int_t TROOTAnalysis::GetNofEntries(){
 
 void TROOTAnalysis::ApplyCut(Double_t c){
 
-        for(Int_t i; i<Cevent->NHits(); i++) {
-
-                if(Cevent->Hit(i)->EnergyDeposit() < c) {
-
-                        Cevent->Hit(i)->SetEnergyDeposit(0.);
-
-
-                }
-
-        }
+        // for(Int_t i; i<Cevent->NHits(); i++) {
+        //
+        //         if(Cevent->Hit(i)->EnergyDeposit() < c) {
+        //
+        //                 Cevent->Hit(i)->SetEnergyDeposit(0.);
+        //
+        //
+        //         }
+        //
+        // }
 
 }
 
 
 void TROOTAnalysis::PrintEdep(){
 
-        for(Int_t i=0; i<Cevent->NHits(); i++) {
-                std::cout<<Cevent->Hit(i)->EnergyDeposit()<<std::endl;
-        }
+        // for(Int_t i=0; i<Cevent->NHits(); i++) {
+        //         std::cout<<Cevent->Hit(i)->EnergyDeposit()<<std::endl;
+        // }
 }
 
 // void TROOTAnalysis::PlotComparison(){
@@ -945,7 +965,7 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
         Double_t eges=0.;
         for(Int_t i=0; i<nHits; i++) {
 
-                auto hitnormal=TransformCoordinates(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z());
+                auto hitnormal=TransformCoordinates(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z(), Cevent->Hit(i)->CalorimeterPart());
                 Double_t edep=Cevent->Hit(i)->EnergyDeposit();
 
                 std::tuple<Double_t, Double_t, Double_t> hit=std::make_tuple(std::get<2>(hitnormal), std::get<1>(hitnormal), std::get<0>(hitnormal));
@@ -988,7 +1008,7 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 
         for(Int_t i=0; i<nHits; i++) {
 
-                auto hitnormal=TransformCoordinates(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z());
+                auto hitnormal=TransformCoordinates(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z(), Cevent->Hit(i)->CalorimeterPart());
 
                 std::tuple<Double_t, Double_t, Double_t> hit=std::make_tuple(std::get<2>(hitnormal), std::get<1>(hitnormal), std::get<0>(hitnormal));
 
@@ -1059,123 +1079,151 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 //--------------------------------------------------------------------------------------------------------------
 
 void TROOTAnalysis::CalcCOGPion(Int_t event){            //calculate vector of (X,Y) tuples containing layerwise center of gravity
-
-
-
-        // Variables for fit
-        Double_t xerr=0;
-        Double_t yerr=0;
-        Double_t cgx=0;
-        Double_t cgy=0;
-        Double_t cgz=0;
-        Double_t Eweight=0;
-
-        // Int_t segment;
         //
-        Double_t EGesPH1=0;
-        // Double_t EGesPH2=0;
-        EcalTree->GetEntry(event);         //grab event from tree
-        Eges = Cevent->GapEnergy();
-        Int_t cnh = Cevent->NHits();
-
-        Double_t integral;
-        Int_t nofLayerswithEdep=0;
-
-        for(Int_t i=0; i<nofLayers; i++) {         //loop over all layers in event
-
-                for(Int_t j =0; j<cnh; j++) {         //loop over all hits in laver i
-
-                        //std::cout<<Cevent->Hit(j)->PhotNr()<<std::endl;
-                        Double_t edep= Cevent->Hit(j)->EnergyDeposit();
-                        if(Cevent->Hit(j)->Z()==i &&  edep > 0.0) {
-
-                                //std::cout<<"fill: "<<Cevent->Hit(j)->PhotNr()<<"from photon mode:"<<phnr<<std::endl;
-                                h1->Fill(Cevent->Hit(j)->X(), Cevent->Hit(j)->Y(), edep);
-
-                        }         //fill histogram with hits of layer i
-                }
-                //std::cout<<photonNR<<" : "<<std::endl;
-                integral=h1->Integral();
-
-                if(integral!=0) {         //check if layer containes energy
-                        nofLayerswithEdep++;
-
-                        Eweight=integral/Cevent->GapEnergy();  //calculate weight
-
-                        EGesPH1+=integral;
-
-                        cgx=h1->GetMean(1);
-                        xerr=h1->GetMeanError(1);
-                        //extract center of gravity and error
-                        cgy=h1->GetMean(2);
-                        yerr=h1->GetMeanError(2);
-
-                        if(yerr<0.00001) {yerr=1/TMath::Sqrt(12); }
-                        if(xerr<0.00001) {xerr=1/TMath::Sqrt(12); }
-
-                        cgz=i;
-
-                        //std::cout<<"segment: "<<std::endl;
-
-                        std::tuple<Double_t, Double_t, Double_t> COGtransformed;
-
-                        //h3->Fill(cgx,cgy,cgz);
-
-                        COGtransformed=TransformCoordinates(cgx, cgy, cgz /*, segment*/);
-
-                        auto cg=std::make_tuple(std::get<0>(COGtransformed), std::get<1>(COGtransformed), std::get<2>(COGtransformed), xerr, yerr, Eweight);
-
-                        //  std::cout<<"------------------------"<<std::endl;
-
-                        coglist.push_back(cg);
-
-
-                }         // end of clustering
-
-
-                //ClusteredHits.clear();
-
-                h1->Reset();
-
-                h2->Reset();
-
-        }                 //end of event
-
-        //showerCOGPhoton1.push_back(TransformCoordinates(h3->GetMean(1), h3->GetMean(2), h3->GetMean(3) /*, segment*/));
-        COGCollectionPH1.push_back(coglist);
-        EnergyPhoton1.push_back(std::make_pair(EGesPH1/0.52, 1 /*segment*/));
-        coglist.clear();
+        //
+        //
+        // // Variables for fit
+        // Double_t xerr=0;
+        // Double_t yerr=0;
+        // Double_t cgx=0;
+        // Double_t cgy=0;
+        // Double_t cgz=0;
+        // Double_t Eweight=0;
+        //
+        // // Int_t segment;
+        // //
+        // Double_t EGesPH1=0;
+        // // Double_t EGesPH2=0;
+        // EcalTree->GetEntry(event);         //grab event from tree
+        // Eges = Cevent->GapEnergy();
+        // Int_t cnh = Cevent->NHits();
+        //
+        // Double_t integral;
+        // Int_t nofLayerswithEdep=0;
+        //
+        // for(Int_t i=0; i<nofLayers; i++) {         //loop over all layers in event
+        //
+        //         for(Int_t j =0; j<cnh; j++) {         //loop over all hits in laver i
+        //
+        //                 //std::cout<<Cevent->Hit(j)->PhotNr()<<std::endl;
+        //                 Double_t edep= Cevent->Hit(j)->EnergyDeposit();
+        //                 if(Cevent->Hit(j)->Z()==i &&  edep > 0.0) {
+        //
+        //                         //std::cout<<"fill: "<<Cevent->Hit(j)->PhotNr()<<"from photon mode:"<<phnr<<std::endl;
+        //                         h1->Fill(Cevent->Hit(j)->X(), Cevent->Hit(j)->Y(), edep);
+        //
+        //                 }         //fill histogram with hits of layer i
+        //         }
+        //         //std::cout<<photonNR<<" : "<<std::endl;
+        //         integral=h1->Integral();
+        //
+        //         if(integral!=0) {         //check if layer containes energy
+        //                 nofLayerswithEdep++;
+        //
+        //                 Eweight=integral/Cevent->GapEnergy();  //calculate weight
+        //
+        //                 EGesPH1+=integral;
+        //
+        //                 cgx=h1->GetMean(1);
+        //                 xerr=h1->GetMeanError(1);
+        //                 //extract center of gravity and error
+        //                 cgy=h1->GetMean(2);
+        //                 yerr=h1->GetMeanError(2);
+        //
+        //                 if(yerr<0.00001) {yerr=1/TMath::Sqrt(12); }
+        //                 if(xerr<0.00001) {xerr=1/TMath::Sqrt(12); }
+        //
+        //                 cgz=i;
+        //
+        //                 //std::cout<<"segment: "<<std::endl;
+        //
+        //                 std::tuple<Double_t, Double_t, Double_t> COGtransformed;
+        //
+        //                 //h3->Fill(cgx,cgy,cgz);
+        //
+        //                 COGtransformed=TransformCoordinates(cgx, cgy, cgz /*, segment*/);
+        //
+        //                 auto cg=std::make_tuple(std::get<0>(COGtransformed), std::get<1>(COGtransformed), std::get<2>(COGtransformed), xerr, yerr, Eweight);
+        //
+        //                 //  std::cout<<"------------------------"<<std::endl;
+        //
+        //                 coglist.push_back(cg);
+        //
+        //
+        //         }         // end of clustering
+        //
+        //
+        //         //ClusteredHits.clear();
+        //
+        //         h1->Reset();
+        //
+        //         h2->Reset();
+        //
+        // }                 //end of event
+        //
+        // //showerCOGPhoton1.push_back(TransformCoordinates(h3->GetMean(1), h3->GetMean(2), h3->GetMean(3) /*, segment*/));
+        // COGCollectionPH1.push_back(coglist);
+        // EnergyPhoton1.push_back(std::make_pair(EGesPH1/0.52, 1 /*segment*/));
+        // coglist.clear();
 
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
 
-std::tuple<Double_t, Double_t, Double_t > TROOTAnalysis::TransformCoordinates(Double_t x, Double_t y, Double_t z /*, Double_t seg*/){
+std::tuple<Double_t, Double_t, Double_t > TROOTAnalysis::TransformCoordinates(Double_t x, Double_t y, Double_t z, std::string cp){
 
         std::tuple<Double_t,Double_t, Double_t> transformedCOGs;
 
+        //transform Inner Calorimeter
+        TVector3 coordinates;
+        if(cp=="InnerGapLV") {
 
-        // if(seg==1) {
-        Double_t offsetX=-1*calsizeXY/2+tiledimX/2;
-        Double_t offsetY=-1*calsizeXY/2+tiledimY/2;
-        Double_t offsetZ;
-        if(absofirst) {
-                offsetZ=AbsoThickness+ GapThickness/2;
-                //std::cout<<"true"<<std::endl;
+                Double_t offsetX=-1*calsizeXY/2+InnertiledimX/2;
+                Double_t offsetY=-1*calsizeXY/2+InnertiledimY/2;
+                Double_t offsetZ;
+
+                if(Innerabsofirst) {
+                        offsetZ=InnerAbsoThickness+ InnerGapThickness/2;
+                        //std::cout<<"true"<<std::endl;
+                }
+                else{
+                        offsetZ=InnerGapThickness/2;
+                        //  std::cout<<"false"<<std::endl;
+
+                }
+
+                //  std::cout<<"X: "<<offsetX<<"Y:"<<offsetY<<"Z: "<<offsetZ<<std::endl;
+
+                coordinates.SetXYZ((offsetX + x * InnertiledimX),              // X
+                                   (offsetY + y * InnertiledimY),                // Y
+                                   (offsetZ + z * (InnerAbsoThickness+InnerGapThickness)));     // Z
         }
-        else{
-                offsetZ=GapThickness/2;
-                //  std::cout<<"false"<<std::endl;
+        else if(cp=="OuterGapLV") {
+
+                Double_t offsetX=-1*calsizeXY/2+OutertiledimX/2;
+                Double_t offsetY=-1*calsizeXY/2+OutertiledimY/2;
+                Double_t offsetZ;
+
+                if(Outerabsofirst) {
+                        offsetZ= PVesselThickness + OuterAbsoThickness + OuterGapThickness/2;
+                        //std::cout<<"true"<<std::endl;
+                }
+                else{
+                        offsetZ=PVesselThickness+OuterGapThickness/2;
+                        //  std::cout<<"false"<<std::endl;
+
+                }
+
+                //  std::cout<<"X: "<<offsetX<<"Y:"<<offsetY<<"Z: "<<offsetZ<<std::endl;
+
+                coordinates.SetXYZ((offsetX + x * OutertiledimX),                        // X
+                                   (offsetY + y * OutertiledimY),                          // Y
+                                   (offsetZ + z * (OuterAbsoThickness+OuterGapThickness)));             // Z
 
         }
-        //  std::cout<<"X: "<<offsetX<<"Y:"<<offsetY<<"Z: "<<offsetZ<<std::endl;
-
-        TVector3 coordinates((offsetX + x * tiledimX),                      // X
-                             (offsetY + y * tiledimY),                      // Y
-                             (offsetZ + z * (AbsoThickness+GapThickness))); // Z
-
-        //coordinates.Print();
+        std::cout<<"Hit is in "<<cp<<std::endl;
+        coordinates.Print();
 
         //rotate into correct segment
 
@@ -1190,63 +1238,63 @@ std::tuple<Double_t, Double_t, Double_t > TROOTAnalysis::TransformCoordinates(Do
 
 
 void TROOTAnalysis::FitCOGsPion(Int_t event){
-        gErrorIgnoreLevel = 1001;
-        EcalTree->GetEntry(event);
-
-        TVector3 ph1_orig=Cevent->MomentumPh1().Unit();
-
-        Fcn myfcn;
-        myfcn.SetMode("photon3D");
-
-        MnUserParameters upar;
-        double error_minimizer_parameters = 1e-4;
-
-
-        myfcn.SetCOGs(COGCollectionPH1[event]);
-
-        upar.Add("a_1", /*EstimatePhoton1[event].first.X()*/ 0., error_minimizer_parameters);
-        upar.Add("a_2", /*EstimatePhoton1[event].first.Y()*/ 0., error_minimizer_parameters);
-        upar.Add("a_3", /*EstimatePhoton1[event].first.Z()*/ 0., error_minimizer_parameters);
-
-        // upar.Fix("a_1");
-        // upar.Fix("a_2");
-        // upar.Fix("a_3");
-
-        //std::cout<<"set COGPH1"<<std::endl;
-        upar.Add("v_1", /*EstimatePhoton1[event].second.X()*/ 0., error_minimizer_parameters);
-        upar.Add("v_2", /*EstimatePhoton1[event].second.Y()*/ 0., error_minimizer_parameters);
-        upar.Add("v_3", /*EstimatePhoton1[event].second.Z()*/ 1., error_minimizer_parameters);
-
-        //  upar.SetLimits("v_3", 0.6, 1.0);
-        //cout << upar << endl;
-
-        MnMigrad migrad(myfcn, upar, 2);
-
-        myfcn.SetCurrentEvent(event);
-
-        //std::cout<<"event: "<<events<<std::endl;
-        FunctionMinimum min = migrad();
-
-        //std::cout<<min<<std::endl;
-
-        MnUserParameterState uParState = min.UserState();
-
-        //std::cout<<"attempt adding params for photon 1"<<std::endl;
-
-        TVector3 A_1(uParState.Value("a_1"), uParState.Value("a_2"), uParState.Value("a_3"));
-        TVector3 V_1(uParState.Value("v_1"), uParState.Value("v_2"), uParState.Value("v_3"));
-        V_1=V_1.Unit();
-
-        auto tp1 = std::make_pair(A_1, V_1);
-        //std::cout<<"errga"<<std::endl;
-        DirectionPhoton1.push_back(tp1);
-        //std::cout<<"adding params for photon 1"<<std::endl;
-
-        TVector3 true_direction=TVector3(0.4,0.4,1.0).Unit();
-
-        dx1->Fill(DirectionPhoton1[event].second.X());
-        dy1->Fill(DirectionPhoton1[event].second.Y());
-        dz1->Fill(TMath::Sqrt(DirectionPhoton1[event].second.Z()*DirectionPhoton1[event].second.Z()));
+        // gErrorIgnoreLevel = 1001;
+        // EcalTree->GetEntry(event);
+        //
+        // TVector3 ph1_orig=Cevent->MomentumPh1().Unit();
+        //
+        // Fcn myfcn;
+        // myfcn.SetMode("photon3D");
+        //
+        // MnUserParameters upar;
+        // double error_minimizer_parameters = 1e-4;
+        //
+        //
+        // myfcn.SetCOGs(COGCollectionPH1[event]);
+        //
+        // upar.Add("a_1", /*EstimatePhoton1[event].first.X()*/ 0., error_minimizer_parameters);
+        // upar.Add("a_2", /*EstimatePhoton1[event].first.Y()*/ 0., error_minimizer_parameters);
+        // upar.Add("a_3", /*EstimatePhoton1[event].first.Z()*/ 0., error_minimizer_parameters);
+        //
+        // // upar.Fix("a_1");
+        // // upar.Fix("a_2");
+        // // upar.Fix("a_3");
+        //
+        // //std::cout<<"set COGPH1"<<std::endl;
+        // upar.Add("v_1", /*EstimatePhoton1[event].second.X()*/ 0., error_minimizer_parameters);
+        // upar.Add("v_2", /*EstimatePhoton1[event].second.Y()*/ 0., error_minimizer_parameters);
+        // upar.Add("v_3", /*EstimatePhoton1[event].second.Z()*/ 1., error_minimizer_parameters);
+        //
+        // //  upar.SetLimits("v_3", 0.6, 1.0);
+        // //cout << upar << endl;
+        //
+        // MnMigrad migrad(myfcn, upar, 2);
+        //
+        // myfcn.SetCurrentEvent(event);
+        //
+        // //std::cout<<"event: "<<events<<std::endl;
+        // FunctionMinimum min = migrad();
+        //
+        // //std::cout<<min<<std::endl;
+        //
+        // MnUserParameterState uParState = min.UserState();
+        //
+        // //std::cout<<"attempt adding params for photon 1"<<std::endl;
+        //
+        // TVector3 A_1(uParState.Value("a_1"), uParState.Value("a_2"), uParState.Value("a_3"));
+        // TVector3 V_1(uParState.Value("v_1"), uParState.Value("v_2"), uParState.Value("v_3"));
+        // V_1=V_1.Unit();
+        //
+        // auto tp1 = std::make_pair(A_1, V_1);
+        // //std::cout<<"errga"<<std::endl;
+        // DirectionPhoton1.push_back(tp1);
+        // //std::cout<<"adding params for photon 1"<<std::endl;
+        //
+        // TVector3 true_direction=TVector3(0.4,0.4,1.0).Unit();
+        //
+        // dx1->Fill(DirectionPhoton1[event].second.X());
+        // dy1->Fill(DirectionPhoton1[event].second.Y());
+        // dz1->Fill(TMath::Sqrt(DirectionPhoton1[event].second.Z()*DirectionPhoton1[event].second.Z()));
 
 }
 
@@ -1350,12 +1398,12 @@ void TROOTAnalysis::DrawHists(){
 
         projectionC->cd(0);
         projection_minimization->Draw("colz");
-
-        std::string path=savepath+"/"+filename+"_.root";
-        projectionC->Print(path.c_str());
-
-        path=savepath+"/"+filename+".pdf";
-        projectionC->Print(path.c_str());
+        //
+        // std::string path=savepath+"/"+filename+"_.root";
+        // projectionC->Print(path.c_str());
+        //
+        // path=savepath+"/"+filename+".pdf";
+        // projectionC->Print(path.c_str());
 
         // showerdepth->cd(0);
         // showerdepthH->Draw();

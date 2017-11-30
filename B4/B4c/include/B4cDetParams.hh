@@ -103,8 +103,8 @@ G4double fNofOuterLayers;
 
 G4double OutertileLenX;
 G4double OutertileLenY;
-G4double OuternofTilesX;
-G4double OuternofTilesY;
+G4double nofOuterTilesX;
+G4double nofOuterTilesY;
 G4double OutertilesPerLayer;
 
 G4double OuterabsoThickness;
@@ -113,8 +113,8 @@ G4double OuterlayerThickness;
 
 G4double InnertileLenX;
 G4double InnertileLenY;
-G4double InnernofTilesX;
-G4double InnernofTilesY;
+G4double nofInnerTilesX;
+G4double nofInnerTilesY;
 G4double InnertilesPerLayer;
 
 G4double InnerabsoThickness;

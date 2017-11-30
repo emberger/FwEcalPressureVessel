@@ -37,92 +37,92 @@ int main(int argc, char * argv[]) {
 //    gStyle->SetLabelSize(0.04,"xy");
 //    gStyle->SetTitleOffset(1.3,"x");
 //    gStyle->SetTitleOffset(1.3,"y");
-        TROOTAnalysis A;
-        A.CalcAngularResolution(argv[1], argv[2]);
+        // TROOTAnalysis A;
+        // A.CalcAngularResolution(argv[1], argv[2]);
 
-        // Double_t cut= std::stod(argv[1]);
-        // Double_t distance=std::stod(argv[2]);
-        //
-        //
-        // std::unique_ptr<TChain> ch1(new TChain("eventTree"));
-        //
-        // std::string treepath= argv[3];
-        // std::cout<<argv[3]<<std::endl;
-        // ch1->Add(treepath.c_str());
-        // ch1->Draw("");
-        // //std::cout<<"hello"<<std::endl;
-        // TROOTAnalysis A(ch1,distance);
-        //
-        //
-        // A.SetPathandFilename(argv[4], argv[5]);
-        //
-        //
-        // Double_t entries=A.GetNofEntries();
-        // 
-        // Int_t eventA=0;
-        //
-        // Int_t progress=0;
-        //
-        // std::unique_ptr<TCanvas> cdir(new TCanvas("PCAReconstruction"));
-        //
-        // cdir->Divide(3,1,0.01,0.01);
-        //
-        // std::unique_ptr<TH1D> hx(new TH1D("xdirection", "xdirection", 1000,-3,3));
-        // std::unique_ptr<TH1D> hy(new TH1D("ydirection", "ydirection", 1000,-3,3));
-        // std::unique_ptr<TH1D> hz(new TH1D("zdirection", "zxdirection", 1000,-3,3));
-        //
-        // hx->GetXaxis()->SetTitle("X component of Direction Vector");
-        // hy->GetXaxis()->SetTitle("Y component of Direction Vector");
-        // hz->GetXaxis()->SetTitle("Z component of Direction Vector");
-        //
-        // hx->GetYaxis()->SetTitle("Entries");
-        // hy->GetYaxis()->SetTitle("Entries");
-        // hz->GetYaxis()->SetTitle("Entries");
-        //
-        //
-        //
-        //
-        // //entries=100000;
-        // for(Int_t i=0; i<entries; i++) {
-        //
-        //         A.EcalTree->GetEntry(i);
-        //
-        //         A.ApplyCut(cut);
-        //         //A.PrintEdep();
-        //         if(A.PCAEvent(i)) {
-        //         //        A.flg=false;
-        //
-        //
-        //         //        TVector3 direction=A.EstimatePhoton1[eventA].second.Unit();
-        //
-        //                 //std::cout<<"Direction: "<<std::endl;
-        //         //        hx->Fill(direction.X());
-        //         //        hy->Fill(direction.Y());
-        //         //        hz->Fill(direction.Z());
-        //                 // A.CalcCOGPion(eventA);
-        //                 // A.FitCOGsPion(eventA);
-        //
-        //                 A.flg=true;
-        //
-        //                 // A.CalcCOGPion(eventA);
-        //                 // A.FitCOGsPion(eventA);
-        //
-        //                 A.PlotProjection(distance, eventA);
-        //
-        //                 eventA++;
-        //
-        //         }
-        //
-        //         progress = ((Double_t)i /entries) * 100;
-        //
-        //
-        //         if ((Int_t)progress % 5 == 0)
-        //         {
-        //                 std::cout << "\r" << std::string(progress/5, '|') << progress << "%";
-        //                 std::cout.flush();
-        //         }
-        // }
-        //
+        Double_t cut=0.0 /*std::stod(argv[1])*/;
+        Double_t distance=1000/*std::stod(argv[2])*/;
+
+
+        std::unique_ptr<TChain> ch1(new TChain("eventTree"));
+
+        std::string treepath= argv[3];
+        //std::cout<<argv[3]<<std::endl;
+        ch1->Add("Tree.root");
+        ch1->Draw("");
+        //std::cout<<"hello"<<std::endl;
+        TROOTAnalysis A(ch1,distance);
+
+
+        //A.SetPathandFilename(argv[4], argv[5]);
+
+
+        Double_t entries=A.GetNofEntries();
+
+        Int_t eventA=0;
+
+        Int_t progress=0;
+
+        std::unique_ptr<TCanvas> cdir(new TCanvas("PCAReconstruction"));
+
+        cdir->Divide(3,1,0.01,0.01);
+
+        std::unique_ptr<TH1D> hx(new TH1D("xdirection", "xdirection", 1000,-3,3));
+        std::unique_ptr<TH1D> hy(new TH1D("ydirection", "ydirection", 1000,-3,3));
+        std::unique_ptr<TH1D> hz(new TH1D("zdirection", "zxdirection", 1000,-3,3));
+
+        hx->GetXaxis()->SetTitle("X component of Direction Vector");
+        hy->GetXaxis()->SetTitle("Y component of Direction Vector");
+        hz->GetXaxis()->SetTitle("Z component of Direction Vector");
+
+        hx->GetYaxis()->SetTitle("Entries");
+        hy->GetYaxis()->SetTitle("Entries");
+        hz->GetYaxis()->SetTitle("Entries");
+
+
+
+
+        //entries=100000;
+        for(Int_t i=0; i<entries; i++) {
+
+                A.EcalTree->GetEntry(i);
+
+                A.ApplyCut(cut);
+                //A.PrintEdep();
+                if(A.PCAEvent(i)) {
+                //        A.flg=false;
+
+
+                //        TVector3 direction=A.EstimatePhoton1[eventA].second.Unit();
+
+                        //std::cout<<"Direction: "<<std::endl;
+                //        hx->Fill(direction.X());
+                //        hy->Fill(direction.Y());
+                //        hz->Fill(direction.Z());
+                        // A.CalcCOGPion(eventA);
+                        // A.FitCOGsPion(eventA);
+
+                        A.flg=true;
+
+                        // A.CalcCOGPion(eventA);
+                        // A.FitCOGsPion(eventA);
+
+                        A.PlotProjection(distance, eventA);
+
+                        eventA++;
+
+                }
+
+                progress = ((Double_t)i /entries) * 100;
+
+
+                if ((Int_t)progress % 5 == 0)
+                {
+                        std::cout << "\r" << std::string(progress/5, '|') << progress << "%";
+                        std::cout.flush();
+                }
+        }
+
 
 
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();

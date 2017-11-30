@@ -71,15 +71,19 @@ void SetCellInfo();
 void SetX(G4int x);
 void SetY(G4int y);
 void SetZ(G4int z);
-//void SetCalorSeg(G4int seg);
+void SetCalorPart(std::string p);
 
 
 
 // get methods
 G4double GetEdep() const;
 G4double GetTrackLength() const;
+
+std::string GetCalorPart() const;
+
 G4bool GetTouch();
 G4bool GetCellInfo();
+
 
 //G4int GetPhotonNumber();
 
@@ -97,7 +101,7 @@ G4bool fTouched;      // Bool to select interesting cells
 G4bool fCellInfo;     // Bool to distinguish cell info from layered info and total accounting
 //G4int Photon;
 
-
+std::string calpart;
 
 G4int Xpos;     //
 G4int Ypos;     // Coordinates to identify Calorimeter Cell
@@ -142,6 +146,10 @@ inline G4double B4cCalorHit::GetEdep() const {
         return fEdep;
 }
 
+inline std::string B4cCalorHit::GetCalorPart() const{
+  return calpart;
+}
+
 inline G4double B4cCalorHit::GetTrackLength() const {
         return fTrackLength;
 }
@@ -153,13 +161,10 @@ inline G4bool B4cCalorHit::GetTouch(){
 inline void B4cCalorHit::SetTouch(){
         fTouched=true;
 }
-// inline void B4cCalorHit::SetPhotonNumber(G4int nr){
-//         Photon = nr;
-// }
-//
-// inline G4int B4cCalorHit::GetPhotonNumber(){
-//         return Photon;
-// }
+
+inline void B4cCalorHit::SetCalorPart(std::string p){
+  calpart=p;
+}
 
 inline void B4cCalorHit::SetCellInfo(){
         fCellInfo=true;

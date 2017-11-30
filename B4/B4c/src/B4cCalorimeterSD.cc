@@ -114,13 +114,12 @@ G4bool B4cCalorimeterSD::ProcessHits(G4Step* step,
         // Get calorimeter cell id
         auto layerNumber = touchable->GetReplicaNumber(1);
 
-        auto LogicalVolume= ROhist->GetSolid()->GetName();
-        std::cout<<LogicalVolume<<std::endl;
-
+        std::string CalorPart=touchable->GetVolume()->GetLogicalVolume()->GetName();
+        std::cout<<CalorPart<<std::endl;
         G4int Cell;
         G4int Strip;
         G4int Layer;
-        //G4int CalorSeg;
+
 
 
 
@@ -128,22 +127,15 @@ G4bool B4cCalorimeterSD::ProcessHits(G4Step* step,
         //Get copynumbers to specify cell
         //
         Cell=ROhist->GetReplicaNumber();
-        //  auto CellV=ROhist-> GetVolume()->GetName();
+        auto CellV=ROhist->GetVolume()->GetName();
 
         Strip=ROhist->GetReplicaNumber(1);
-        //  auto StripV=ROhist-> GetVolume(1)->GetName();
+        auto StripV=ROhist->GetVolume(1)->GetName();
 
         Layer=ROhist->GetReplicaNumber(3);
-        //  auto LayerV=ROhist-> GetVolume(3)->GetName();
-        //std::cout<<"Z:"<<Layer /*<<" Y: "<<Strip<<" X: "<<Cell*/<<std::endl;
+        auto LayerV=ROhist->GetVolume(3)->GetName();
+        std::cout<<"Z:"<<Layer <<" Y: "<<Strip<<" X: "<<Cell<<std::endl;
 
-        //CalorSeg=ROhist->GetReplicaNumber(4);
-        //std::cout<<"CalorSeg: "<<CalorSeg<<std::endl;
-
-        //Calculate CellID
-
-        //G4int ROCellID=(Layer)*StilesPerLayer+(Strip)*ScellsPerStrip+Cell;
-        //G4int ROLayerID=fNofCells*StilesPerLayer+Layer;
 
         auto hit=(*fHitsCollection)[ROHitID];
         if ( !hit ) {
@@ -163,6 +155,7 @@ G4bool B4cCalorimeterSD::ProcessHits(G4Step* step,
         //hit->SetPhotonNumber(photNR);
         //G4cout<<hit->GetPhotonNumber()<<G4endl;
         if(hit->GetTouch()==false) {
+                hit->SetCalorPart(CalorPart);
                 hit->SetTouch();
                 hit->SetCellInfo();
                 hit->SetX(Cell);

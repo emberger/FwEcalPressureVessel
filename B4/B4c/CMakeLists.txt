@@ -75,10 +75,10 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 # Add the executable, and link it to the Geant4 libraries
 #
 add_executable(exampleB4c exampleB4c.cc ${sources} ${headers})
-#add_executable(Analysis AnalysisMain.cc ${sources} ${headers})
+add_executable(Analysis AnalysisMain.cc ${sources} ${headers})
 
 target_link_libraries(exampleB4c ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
-#target_link_libraries(Analysis  ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
+target_link_libraries(Analysis  ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
 
 #target_link_libraries(exampleB4c ${Geant4_LIBRARIES})
 
@@ -109,4 +109,4 @@ endforeach()
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
 install(TARGETS exampleB4c DESTINATION bin)
-#install(TARGETS Analysis DESTINATION bin)
+install(TARGETS Analysis DESTINATION bin)

@@ -84,7 +84,7 @@ inline void SetPathandFilename(std::string path, std::string fname){
         pathset=true;
 }
 
-std::tuple<Double_t, Double_t, Double_t> TransformCoordinates(Double_t x, Double_t y, Double_t z);
+std::tuple<Double_t, Double_t, Double_t> TransformCoordinates(Double_t x, Double_t y, Double_t z, std::string cp);
 
 std::vector<std::pair<Double_t, Int_t> > EnergyPhoton1;
 std::vector<std::pair<TVector3, TVector3> > EstimatePhoton1;
@@ -102,12 +102,20 @@ Int_t nofEntries;     // number of events in Tree
 
 Double_t Eges;  //Energy in event
 
-Double_t tiledimX;
-Double_t tiledimY;
+Double_t InnertiledimX;
+Double_t InnertiledimY;
+Double_t InnerAbsoThickness;
+Double_t InnerGapThickness;
+Double_t nofInnerLayers;
+
+Double_t OutertiledimX;
+Double_t OutertiledimY;
+Double_t OuterAbsoThickness;
+Double_t OuterGapThickness;
+Double_t nofOuterLayers;
+
 Double_t calsizeXY;
-Double_t AbsoThickness;
-Double_t GapThickness;
-Double_t nofLayers;
+Double_t PVesselThickness;
 
 Double_t histsizeX;
 Double_t histsizeY;
@@ -116,7 +124,9 @@ Double_t histsizeZ;
 std::string savepath;
 std::string filename;
 
-Bool_t absofirst;
+Bool_t Innerabsofirst;
+Bool_t Outerabsofirst;
+
 Bool_t pathset=false;
 
 TVector3 gunposition;

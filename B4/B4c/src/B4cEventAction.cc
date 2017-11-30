@@ -68,45 +68,37 @@ B4cEventAction::~B4cEventAction()
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 B4ROOTEvent* B4cEventAction::CalEvent()
 {
-        // check that the rootFile is open, if not, open it! Also create the tree and everything else with it
+        // create the tree and everything else on first function call
 
-        if (!eventTree)
+         if (!eventTree)
         {
                 std::cout << "Attempting to open ROOT file " << "ECalEventTree" << std::endl;
-                //rootFile = new TFile("ECalEventTree.root", "RECREATE");
+
                 calEvent = new B4ROOTEvent();
+
                 eventTree = new TTree("eventTree", "B4ROOT Event Tree");
 
+                eventTree->Branch("EventBranch", "B4ROOTEvent", &calEvent, 64000);
 
-
-                //std::cout<<"TilesX: "<<GetInst().GetnofTilesX()<<std::endl;
-                //std::cout<<"TilesX: "<<calEvent->TilesX()<<std::endl;
-                eventTree->Branch("EventBranch", "B4ROOTEvent", &calEvent);
                 eventTree->SetAutoSave(1.99e9);
-//		rootFile->SetCompressionLevel(9);
+
         }
         return calEvent;
 }
 
 
-void B4cEventAction::SetStepHit(G4double x, G4double y, G4double z, G4double eDep /*,G4int s, G4int phnr*/)
+void B4cEventAction::SetStepHit(G4double x, G4double y, G4double z, G4double eDep, std::string part)
 {
         B4ROOTHit hit;
 
         hit.SetCoordinates(x, y, z);
-        //hit.SetCalorimeterSegment(s);
+
         hit.SetEnergyDeposit(eDep);
-        //hit.SetPhotNr(phnr);
 
-        //G4cout<<phnr<<" SetStepHit"<<hit.PhotNr()<<G4endl;
+        hit.SetCalorimeterPart(part);
+
         this->CalEvent()->AddHit(hit);
-        //G4cout << "Setting Hit! " << G4endl;
-
 }
-
-
-
-
 
 B4cCalorHitsCollection*
 B4cEventAction::GetHitsCollection(G4int hcID,
@@ -216,50 +208,36 @@ void B4cEventAction::EndOfEventAction(const G4Event* event)
         analysisManager->AddNtupleRow();
 
 
-
         //fill ROOT Classes
 
         this->CalEvent()->SetEventNo(eventID);
-        this->CalEvent()->SetGapThickness(GetInst().GetgapThickness());
 
-        //std::cout<<"Gapthickness: "<<GetInst().GetgapThickness()<<std::endl;
-        //std::cout<<"Gapthickness: "<<this->CalEvent()->GapThickness()<<std::endl;
+        this->CalEvent()->SetInnerGapThickness(GetInst().GetInnergapThickness());
+        this->CalEvent()->SetInnerAbsoThickness(GetInst().GetInnerabsoThickness());
+        this->CalEvent()->SetNumberOfInnerLayers(GetInst().GetfNofInnerLayers());
+        this->CalEvent()->SetInnerTilesizeX(GetInst().GetInnertileLenX());
+        this->CalEvent()->SetInnerTilesizeY(GetInst().GetInnertileLenY());
+        this->CalEvent()->SetInnerAbsFirst(GetInst().GetInnerAbsFirst());
 
-        this->CalEvent()->SetAbsoThickness(GetInst().GetabsoThickness());
-        this->CalEvent()->SetNumberOfLayers(GetInst().GetfNofLayers());
-        this->CalEvent()->SetTilesizeX(GetInst().GettileLenX());
-        this->CalEvent()->SetTilesizeY(GetInst().GettileLenY());
+
+        this->CalEvent()->SetOuterGapThickness(GetInst().GetOutergapThickness());
+        this->CalEvent()->SetOuterAbsoThickness(GetInst().GetOuterabsoThickness());
+        this->CalEvent()->SetNumberOfOuterLayers(GetInst().GetfNofOuterLayers());
+        this->CalEvent()->SetOuterTilesizeX(GetInst().GetOutertileLenX());
+        this->CalEvent()->SetOuterTilesizeY(GetInst().GetOutertileLenY());
+        this->CalEvent()->SetOuterAbsFirst(GetInst().GetOuterAbsFirst());
+
         this->CalEvent()->SetcalsizeXY(GetInst().GetcalorSizeXY());
-        this->CalEvent()->SetAbsFirst(GetInst().GetAbsFirst());
-        //this->CalEvent()->SetEnergyPhoton1(GetEInst().GetEnergyPh1());
-        //this->CalEvent()->SetEnergyPhoton2(GetEInst().GetEnergyPh2());
+        this->CalEvent()->SetPVesselThickness(GetInst().GetPvesselThickness());
+
+        this->CalEvent()->SetEnergyPrimary(event->GetPrimaryVertex()->GetPrimary()->GetKineticEnergy());
+
         TVector3 vertpos(event->GetPrimaryVertex()->GetPosition().getX(),event->GetPrimaryVertex()->GetPosition().getY(),event->GetPrimaryVertex()->GetPosition().getZ());
         this->CalEvent()->SetGunPos(vertpos);
 
         G4ThreeVector mom1=event->GetPrimaryVertex()->GetPrimary()->GetMomentumDirection();
         this->CalEvent()->SetMomentumPh1(mom1.getX(), mom1.getY(),mom1.getZ());
 
-        // G4ThreeVector mom2=GetEInst().GetMomPh2();
-        // this->CalEvent()->SetMomentumPh2(mom2.getX(), mom2.getY(),mom2.getZ());
-
-
-
-        //this->CalEvent()->SetMomentumPh2();
-        //std::cout<<this->CalEvent()->EventNo()<<std::endl;
-
-        // double tmpE1=0;
-        // double tmpE2=0;
-        // double seglistph1[6]={0,0,0,0,0,0};
-        // double seglistph2[6]={0,0,0,0,0,0};
-        //
-        // double eseg1=0;
-        // double eseg2=0;
-        // int segph1=0;
-        // int segph2=0;
-
-        //  bool goodevent=false;
-
-        //if(GetEInst().GetTD()==false) {
         auto ent=gapHC->entries();
 
         for (int i=0; i<ent; i++) {
@@ -269,76 +247,20 @@ void B4cEventAction::EndOfEventAction(const G4Event* event)
                         this->SetStepHit(tHit->GetX(),
                                          tHit->GetY(),
                                          tHit->GetZ(),
-                                         tHit->GetEdep()/*,
-                                                           tHit->GetCalorSeg(),
-                                                           tHit->GetPhotonNumber()*/);
-
-                        // if(tHit->GetPhotonNumber()==1) {
-                        //
-                        //         double e1=tHit->GetEdep();
-                        //         tmpE1+=e1;
-                        //
-                        //         int seg1=tHit->GetCalorSeg()-1;
-                        //         seglistph1[seg1]+=e1;
-                        // }
-                        //
-                        // else if(tHit->GetPhotonNumber()==2) {
-                        //         double e2=tHit->GetEdep();
-                        //         tmpE2+=e2;
-                        //
-                        //         int seg2=tHit->GetCalorSeg()-1;
-                        //         seglistph2[seg2]+=e2;
-                        //
-                        // }
-                        //
-                        // for(int k =0; k<6; k++) {
-                        //
-                        //         if(seglistph1[k]>eseg1) {
-                        //                 segph1=k;
-                        //                 eseg1=seglistph1[k];
-                        //         }
-                        //         if(seglistph2[k]>eseg2) {
-                        //                 segph2=k;
-                        //                 eseg2=seglistph2[k];
-                        //         }
-                        //
-                        // }
-
+                                         tHit->GetEdep(),
+                                          tHit->GetCalorPart());
                 }
                 if(i == ent-1) {
                         this->CalEvent()->SetGapEnergy(tHit->GetEdep());
-                        //G4cout<<tHit->GetEdep()<<G4endl;
+                        G4cout<<tHit->GetEdep()<<G4endl;
                 }
-
         }
 
-        // this->CalEvent()->SetSegmentph1(segph1+1);
-        // this->CalEvent()->SetSegmentph2(segph2+1);
-        //
-        //
-        // if(tmpE1*0.9<seglistph1[segph1] && tmpE2*0.9<seglistph2[segph2]) {
-
-        //goodevent=true;
         eventTree->Fill();
-
-        // }
-
-        //}
-        //std::cout<<"Gapthickness: "<<this->CalEvent()->GapThickness()<<std::endl;
 
         calEvent->Clear();
 
-        //GetEInst().ReSetTD();
-        //std::cout<<"Gapthickness: "<<this->CalEvent()->GapThickness()<<std::endl;
-        //	}
-        //if(event->GetEventID()==G4RunManager::GetCurrentRun()->GetNumberOfEventToBeProcessed()){
-        //rootFile->Write();
-        //rootFile->Close();
-        //std::cout<<"Event done"<<std::endl;
         std::cout<<"Tree has now "<<eventTree->GetEntries()<<" entries"<<std::endl;
-        //eventTree->Print();
-        //}
-
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

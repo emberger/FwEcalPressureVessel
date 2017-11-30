@@ -41,9 +41,9 @@ G4VPhysicalVolume* MyRO::Build(){
 
 								// Geometry parameters also for Detector Construction
 								GetInst().SetfNofInnerLayers(10);  // in #
-								GetInst().SetfNofOuterLayers(90);
+								GetInst().SetfNofOuterLayers(10);
 
-								GetInst().SetcalorSizeXY(2000); // in mm
+								GetInst().SetcalorSizeXY(1000); // in mm
 
 								GetInst().SetInnertileLenX(10); // in mm
 								GetInst().SetInnertileLenY(10); // in mm
@@ -55,7 +55,7 @@ G4VPhysicalVolume* MyRO::Build(){
 								GetInst().SetInnergapThickness(10); // in mm
 
 								GetInst().SetOuterabsoThickness(1); // in mm
-								GetInst().SetOutergapThickness(10); // in mm
+								GetInst().SetOutergapThickness(20); // in mm
 
 								GetInst().SetPvesselThickness(20); //in mm
 
@@ -113,17 +113,17 @@ G4VPhysicalVolume* MyRO::Build(){
 								auto RODetectorLV
 																= new G4LogicalVolume(
 																RODetectorS,                                             // its solid
-																defaultMaterial,                                          // its material
+																dummyMat,                                          // its material
 																"RODetector");                                           // its name
 
-								G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetDetectorThickness()/2)*mm);
+								G4ThreeVector ROsegD(0*mm,0*mm,(GetInst().GetDetectorThickness()/2)*mm);
 
 								new G4PVPlacement(
 																0,                                                        // no rotation
-																seg1,                                          // at (0,0,0)
+																ROsegD,                                          // at (0,0,0)
 																RODetectorLV,                                                  // its logical volume
 																"RODetector",                                            // its name
-																ROWorldLV,                                                  // its mother  volume
+																ROWorldLog,                                                  // its mother  volume
 																false,                                                    // no boolean operation
 																1,                                                        // copy number
 																fCheckOverlaps);                                       // checking overlaps
@@ -138,14 +138,14 @@ G4VPhysicalVolume* MyRO::Build(){
 								auto ROcalorInsideLV
 																= new G4LogicalVolume(
 																ROcalorimeterInsideS,                                                     // its solid
-																defaultMaterial,                                                  // its material
+																dummyMat,                                                  // its material
 																"ROCalorimeterInside");                                                   // its name
 
-								G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetInnercalorThickness()/2)*mm);
+								G4ThreeVector ROsegI(0*mm,0*mm,(-GetInst().GetDetectorThickness()/2+GetInst().GetInnercalorThickness()/2)*mm);
 
 								new G4PVPlacement(
 																0,                                                                // no rotation
-																seg1,                                                  // at (0,0,0)
+																ROsegI,                                                  // at (0,0,0)
 																ROcalorInsideLV,                                                          // its logical volume
 																"ROCalorimeterInside",                                                    // its name
 																RODetectorLV,                                                          // its mother  volume
@@ -164,14 +164,14 @@ G4VPhysicalVolume* MyRO::Build(){
 								auto ROcalorOutsideLV
 																= new G4LogicalVolume(
 																ROcalorimeterOutsideS,                                                     // its solid
-																defaultMaterial,                                                  // its material
+																dummyMat,                                                  // its material
 																"ROCalorimeterOutside");                                                   // its name
 
-								G4ThreeVector seg1(0*mm,0*mm,(GetInst().GetInnercalorThickness()+GetInst().GetPvesselThickness()+(GetInst().GetOutercalorThickness()/2))*mm);
+								G4ThreeVector ROsegO(0*mm,0*mm,(-GetInst().GetDetectorThickness()/2+GetInst().GetInnercalorThickness()+GetInst().GetPvesselThickness()+GetInst().GetOutercalorThickness()/2)*mm);
 
 								new G4PVPlacement(
 																0,                                                                // no rotation
-																seg1,                                                  // at (0,0,0)
+																ROsegO,                                                  // at (0,0,0)
 																ROcalorOutsideLV,                                                          // its logical volume
 																"ROCalorimeterOutside",                                                    // its name
 																RODetectorLV,                                                          // its mother  volume
@@ -196,7 +196,7 @@ G4VPhysicalVolume* MyRO::Build(){
 								auto ROInnerlayerLV
 																= new G4LogicalVolume(
 																ROInnerlayerS,                        // its solid
-																defaultMaterial,               // its material
+																dummyMat,               // its material
 																"ROInnerLayer");                      // its name
 
 								new G4PVReplica(
@@ -280,6 +280,30 @@ G4VPhysicalVolume* MyRO::Build(){
 																								GetInst().GetInnertileLenX());
 
 
+
+
+
+								//
+								// OuterLayer
+								//
+
+								auto ROOuterlayerS
+																= new G4Box("ROOuterLayer",                             // its name
+																												GetInst().GetcalorSizeXY()/2, GetInst().GetcalorSizeXY()/2, GetInst().GetOuterlayerThickness()/2);                             //its size
+
+								auto ROOuterlayerLV
+																= new G4LogicalVolume(
+																ROOuterlayerS,                                        // its solid
+																dummyMat,                               // its material
+																"ROOuterLayer");                                      // its name
+
+								new G4PVReplica(
+																"ROOuterLayer",                                       // its name
+																ROOuterlayerLV,                                       // its logical volume
+																ROcalorOutsideLV,                                       // its mother
+																kZAxis,                                        // axis of replication
+																GetInst().GetfNofOuterLayers(),                                     // number of replica
+																GetInst().GetOuterlayerThickness());                               // witdth of replica
 								//-------------------------------
 								//build Outer calorimeter readout cells
 								//-------------------------------
@@ -370,10 +394,10 @@ G4VPhysicalVolume* MyRO::Build(){
 
 
 								auto dummy
-																= new B4cCalorimeterSD("dummy", "dummyCollection",0,0,0);
+																= new B4cCalorimeterSD("dummy", "dummyCollection");
 
 								InnerCellLV->SetSensitiveDetector(dummy);
-								OuterCellLV->SetSensitiveDetector(dummy)
+								OuterCellLV->SetSensitiveDetector(dummy);
 
 
 								return ROWorld;
