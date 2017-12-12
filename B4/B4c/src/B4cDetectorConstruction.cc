@@ -107,6 +107,7 @@ void B4cDetectorConstruction::DefineMaterials()
         nistManager->FindOrBuildMaterial("G4_Pb");
         nistManager->FindOrBuildMaterial("G4_Cu");
         nistManager->FindOrBuildMaterial("G4_POLYSTYRENE");
+        nistManager->FindOrBuildMaterial("G4_Ti");
 
 
         //BGO material

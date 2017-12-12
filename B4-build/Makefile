@@ -193,6 +193,32 @@ Analysis/fast:
 	$(MAKE) -f B4c/CMakeFiles/Analysis.dir/build.make B4c/CMakeFiles/Analysis.dir/build
 .PHONY : Analysis/fast
 
+#=============================================================================
+# Target rules for targets named AngularResolution
+
+# Build rule for target.
+AngularResolution: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 AngularResolution
+.PHONY : AngularResolution
+
+# fast build rule for target.
+AngularResolution/fast:
+	$(MAKE) -f B4c/CMakeFiles/AngularResolution.dir/build.make B4c/CMakeFiles/AngularResolution.dir/build
+.PHONY : AngularResolution/fast
+
+#=============================================================================
+# Target rules for targets named PlotQuantiles
+
+# Build rule for target.
+PlotQuantiles: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 PlotQuantiles
+.PHONY : PlotQuantiles
+
+# fast build rule for target.
+PlotQuantiles/fast:
+	$(MAKE) -f B4c/CMakeFiles/PlotQuantiles.dir/build.make B4c/CMakeFiles/PlotQuantiles.dir/build
+.PHONY : PlotQuantiles/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -208,6 +234,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... exampleB4c"
 	@echo "... Analysis"
+	@echo "... AngularResolution"
+	@echo "... PlotQuantiles"
 .PHONY : help
 
 

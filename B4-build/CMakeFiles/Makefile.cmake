@@ -64,4 +64,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/B4.dir/DependInfo.cmake"
   "B4c/CMakeFiles/exampleB4c.dir/DependInfo.cmake"
   "B4c/CMakeFiles/Analysis.dir/DependInfo.cmake"
+  "B4c/CMakeFiles/AngularResolution.dir/DependInfo.cmake"
+  "B4c/CMakeFiles/PlotQuantiles.dir/DependInfo.cmake"
   )

@@ -2,9 +2,7 @@
 
 echo working!
 
-
 AngCOUNTER=0
-
 
 Sen=50          #starting energy
 EnIterations=10
@@ -14,21 +12,21 @@ eventsPerEnergy=5000
 Xangle=0.4     #starting angles
 Yangle=0.4
 Zangle=1.0
+
+XPos=-200.0;     #gun position
+YPos=-200.0;
+ZPos=-10.0;
+
 XAngIncrement=0.
  YAngIncrement=0.
 AngIiterations=1
 
-
-
-
-
-foldername=rmsx_over_E_lead1mmScint5mm_absorberfirst_20x20mmGran  #folder containing .root files
-
-
+foldername=AngReso_IT20_OT20_Ogapfirst_25Inner_50Outer_lead1mm_Polystyrene5mm_14mmTitanVessel  #folder containing .root files
 
  mkdir $foldername
 
  sed -i "19 s%^/run/beamOn.*%/run/beamOn $eventsPerEnergy%" GeantSim.mac
+ sed -i "15 s%^/gun/position.*%/gun/position $XPos $YPos $ZPos mm%" GeantSim.mac
 
      while [ $AngCOUNTER -lt $AngIiterations ]; do
 

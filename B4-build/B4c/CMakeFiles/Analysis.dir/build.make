@@ -321,9 +321,33 @@ B4c/CMakeFiles/Analysis.dir/src/Minimizer.cc.o.provides: B4c/CMakeFiles/Analysis
 B4c/CMakeFiles/Analysis.dir/src/Minimizer.cc.o.provides.build: B4c/CMakeFiles/Analysis.dir/src/Minimizer.cc.o
 
 
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/CalcAngularRes.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/CalcAngularRes.cc
+
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.i"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/CalcAngularRes.cc > CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.i
+
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.s"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/CalcAngularRes.cc -o CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.s
+
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.requires:
+
+.PHONY : B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.requires
+
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.provides: B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.requires
+	$(MAKE) -f B4c/CMakeFiles/Analysis.dir/build.make B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.provides.build
+.PHONY : B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.provides
+
+B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.provides.build: B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o
+
+
 B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/RootClasses_dict.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/RootClasses_dict.cc
 
 B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.i: cmake_force
@@ -347,7 +371,7 @@ B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o.provides.build: B4c/CMakeF
 
 B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cPionManager.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cPionManager.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.i: cmake_force
@@ -369,9 +393,33 @@ B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o.provides: B4c/CMakeFiles/Ana
 B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o.provides.build: B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o
 
 
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/PlotQuantiles.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/PlotQuantiles.cc
+
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.i"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/PlotQuantiles.cc > CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.i
+
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.s"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/PlotQuantiles.cc -o CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.s
+
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.requires:
+
+.PHONY : B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.requires
+
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.provides: B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.requires
+	$(MAKE) -f B4c/CMakeFiles/Analysis.dir/build.make B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.provides.build
+.PHONY : B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.provides
+
+B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.provides.build: B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o
+
+
 B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cEventAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cEventAction.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.i: cmake_force
@@ -395,7 +443,7 @@ B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o.provides.build: B4c/CMakeFil
 
 B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cDetParams.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cDetParams.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.i: cmake_force
@@ -419,7 +467,7 @@ B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o.provides.build: B4c/CMakeFiles
 
 B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4PrimaryGeneratorAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4PrimaryGeneratorAction.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.i: cmake_force
@@ -443,7 +491,7 @@ B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o.provides.build: B4
 
 B4c/CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorHit.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorHit.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.i: cmake_force
@@ -467,7 +515,7 @@ B4c/CMakeFiles/Analysis.dir/src/B4cCalorHit.cc.o.provides.build: B4c/CMakeFiles/
 
 B4c/CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorimeterSD.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorimeterSD.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.i: cmake_force
@@ -491,7 +539,7 @@ B4c/CMakeFiles/Analysis.dir/src/B4cCalorimeterSD.cc.o.provides.build: B4c/CMakeF
 
 B4c/CMakeFiles/Analysis.dir/src/B4cActionInitialization.cc.o: B4c/CMakeFiles/Analysis.dir/flags.make
 B4c/CMakeFiles/Analysis.dir/src/B4cActionInitialization.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cActionInitialization.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cActionInitialization.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object B4c/CMakeFiles/Analysis.dir/src/B4cActionInitialization.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Analysis.dir/src/B4cActionInitialization.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cActionInitialization.cc
 
 B4c/CMakeFiles/Analysis.dir/src/B4cActionInitialization.cc.i: cmake_force
@@ -526,8 +574,10 @@ Analysis_OBJECTS = \
 "CMakeFiles/Analysis.dir/src/B4cDetectorConstruction.cc.o" \
 "CMakeFiles/Analysis.dir/src/B4cReadoutGeometry.cc.o" \
 "CMakeFiles/Analysis.dir/src/Minimizer.cc.o" \
+"CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o" \
 "CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o" \
 "CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o" \
+"CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o" \
 "CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o" \
 "CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o" \
 "CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o" \
@@ -549,8 +599,10 @@ B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4ROOTEvent.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4cDetectorConstruction.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4cReadoutGeometry.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/Minimizer.cc.o
+B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o
+B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o
@@ -618,7 +670,7 @@ B4c/Analysis: /remote/pcilc7/software/Geant4_10.3.3/geant4.10.03.p03-install/lib
 B4c/Analysis: /remote/pcilc7/software/Geant4_10.3.3/geant4.10.03.p03-install/lib/libG4global.so
 B4c/Analysis: /remote/pcilc7/software/Geant4_10.3.3/geant4.10.03.p03-install/lib/libG4clhep.so
 B4c/Analysis: B4c/CMakeFiles/Analysis.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable Analysis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable Analysis"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Analysis.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -637,8 +689,10 @@ B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4ROOTEven
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4cDetectorConstruction.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4cReadoutGeometry.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/Minimizer.cc.o.requires
+B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/CalcAngularRes.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/RootClasses_dict.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4cPionManager.cc.o.requires
+B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/PlotQuantiles.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4cEventAction.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4cDetParams.cc.o.requires
 B4c/CMakeFiles/Analysis.dir/requires: B4c/CMakeFiles/Analysis.dir/src/B4PrimaryGeneratorAction.cc.o.requires

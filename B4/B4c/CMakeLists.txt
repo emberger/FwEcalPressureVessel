@@ -15,10 +15,11 @@ set(CMAKE_MODULE_PATH $ENV{ROOTSYS}/etc/cmake)
 
 #find_package(ROOT REQUIRED COMPONENTS RIO Net Hist Graf Graf3d Gpad Tree Rint Postscript Matrix Physics MathCore Thread Matrix Minuit Minuit2)
 #find_package(ROOT REQUIRED)
-
-
 find_package(ROOT REQUIRED COMPONENTS Minuit Minuit2)
 set(ROOT_LIBRARIES ${ROOT_LIBRARIES})
+
+#find_package(ROOT REQUIRED COMPONENTS libMinuit libMinuit2)
+#set(ROOT_LIBRARIES ${ROOT_LIBRARIES})
 #include(${ROOT_USE_FILE})
 
 
@@ -29,6 +30,10 @@ include_directories(${ROOT_INCLUDE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+
+
+#find_package(Boost COMPONENTS system filesystem REQUIRED)
+#include_directories(${Boost_INCLUDE_DIRS})
 
 #----------------------------------------------------------------------------
 # Find Geant4 package, activating all available UI and Vis drivers by default
@@ -76,11 +81,13 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 #
 add_executable(exampleB4c exampleB4c.cc ${sources} ${headers})
 add_executable(Analysis AnalysisMain.cc ${sources} ${headers})
+add_executable(AngularResolution AngularResolution.cc ${sources} ${headers})
+add_executable(PlotQuantiles PlotQuantiles.cc ${sources} ${headers})
 
 target_link_libraries(exampleB4c ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
 target_link_libraries(Analysis  ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
-
-#target_link_libraries(exampleB4c ${Geant4_LIBRARIES})
+target_link_libraries(AngularResolution ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )# ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(PlotQuantiles ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
@@ -102,11 +109,16 @@ foreach(_script ${EXAMPLEB4C_SCRIPTS})
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}
     COPYONLY
-    )
+ #add_executable(Analysis AnalysisMain.cc ${sources} ${headers})
+   )
 endforeach()
 
 #----------------------------------------------------------------------------
 # Install the executable to 'bin' directory under CMAKE_INSTALL_PREFIX
 #
 install(TARGETS exampleB4c DESTINATION bin)
+install(TARGETS AngularResolution DESTINATION bin)
 install(TARGETS Analysis DESTINATION bin)
+install(TARGETS PlotQuantiles DESTINATION bin)
+
+

@@ -207,7 +207,6 @@ void B4cEventAction::EndOfEventAction(const G4Event* event)
         analysisManager->FillNtupleDColumn(3, gapHit->GetTrackLength());
         analysisManager->AddNtupleRow();
 
-
         //fill ROOT Classes
 
         this->CalEvent()->SetEventNo(eventID);
@@ -218,7 +217,6 @@ void B4cEventAction::EndOfEventAction(const G4Event* event)
         this->CalEvent()->SetInnerTilesizeX(GetInst().GetInnertileLenX());
         this->CalEvent()->SetInnerTilesizeY(GetInst().GetInnertileLenY());
         this->CalEvent()->SetInnerAbsFirst(GetInst().GetInnerAbsFirst());
-
 
         this->CalEvent()->SetOuterGapThickness(GetInst().GetOutergapThickness());
         this->CalEvent()->SetOuterAbsoThickness(GetInst().GetOuterabsoThickness());
@@ -248,7 +246,7 @@ void B4cEventAction::EndOfEventAction(const G4Event* event)
                                          tHit->GetY(),
                                          tHit->GetZ(),
                                          tHit->GetEdep(),
-                                          tHit->GetCalorPart());
+                                         tHit->GetCalorPart());
                 }
                 if(i == ent-1) {
                         this->CalEvent()->SetGapEnergy(tHit->GetEdep());

@@ -115,7 +115,7 @@ G4bool B4cCalorimeterSD::ProcessHits(G4Step* step,
         auto layerNumber = touchable->GetReplicaNumber(1);
 
         std::string CalorPart=touchable->GetVolume()->GetLogicalVolume()->GetName();
-        std::cout<<CalorPart<<std::endl;
+        //std::cout<<CalorPart<<std::endl;
         G4int Cell;
         G4int Strip;
         G4int Layer;
@@ -134,7 +134,7 @@ G4bool B4cCalorimeterSD::ProcessHits(G4Step* step,
 
         Layer=ROhist->GetReplicaNumber(3);
         auto LayerV=ROhist->GetVolume(3)->GetName();
-        std::cout<<"Z:"<<Layer <<" Y: "<<Strip<<" X: "<<Cell<<std::endl;
+        //std::cout<<"Z:"<<Layer <<" Y: "<<Strip<<" X: "<<Cell<<std::endl;
 
 
         auto hit=(*fHitsCollection)[ROHitID];

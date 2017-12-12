@@ -78,9 +78,8 @@ void FitCOGsPion(Int_t event);
 void DrawHists();
 void PrintFitHists(Int_t minevent, Int_t maxevent);
 
-inline void SetPathandFilename(std::string path, std::string fname){
+inline void SetPath(std::string path){
         savepath=path;
-        filename=fname;
         pathset=true;
 }
 
@@ -130,6 +129,9 @@ Bool_t Outerabsofirst;
 Bool_t pathset=false;
 
 TVector3 gunposition;
+TVector3 true_direction;
+Double_t true_energy;
+
 TVector3 projection_true;
 
 std::vector<std::tuple<Double_t,Double_t, Double_t, Double_t, Double_t, Double_t> > coglist;
@@ -163,9 +165,17 @@ std::unique_ptr<TH1D> dz2;
 
 //hists for backprojection
 
-std::unique_ptr<TCanvas> projectionC;
+std::unique_ptr<TCanvas> projectionCODR;
+std::unique_ptr<TCanvas> projectionCPCA;
+
 std::unique_ptr<TH2D> projection_pca;
 std::unique_ptr<TH2D> projection_minimization;
+
+std::unique_ptr<TCanvas> angledifferenceCPCA;
+std::unique_ptr<TCanvas> angledifferenceCODR;
+
+std::unique_ptr<TH1D> angledifference_pca;
+std::unique_ptr<TH1D> angledifference_minimization;
 
 std::unique_ptr<TCanvas> correlationC;
 std::unique_ptr<TH2D> projection_correlationX;
@@ -179,6 +189,7 @@ std::unique_ptr<TH1D> projection_correlationDeltaRdiff;
 std::unique_ptr<TLine> line_x;
 std::unique_ptr<TLine> line_y;
 
+//TH3D * cogs= new TH3D("cogs", "cogs",200,-400,0,200,-400,0,500,0,500);
 
 // TCanvas * showerdepth = new TCanvas("showerDepthC", "showerDepthC");
 // TH1D * showerdepthH = new TH1D("showerDepth", "showerDepth", 100,0,100);

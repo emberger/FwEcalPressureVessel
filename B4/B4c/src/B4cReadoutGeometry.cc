@@ -40,22 +40,22 @@ MyRO::~MyRO(){
 G4VPhysicalVolume* MyRO::Build(){
 
 								// Geometry parameters also for Detector Construction
-								GetInst().SetfNofInnerLayers(10);  // in #
-								GetInst().SetfNofOuterLayers(10);
+								GetInst().SetfNofInnerLayers(40);  // in #
+								GetInst().SetfNofOuterLayers(50);
 
-								GetInst().SetcalorSizeXY(1000); // in mm
+								GetInst().SetcalorSizeXY(2000); // in mm
 
-								GetInst().SetInnertileLenX(10); // in mm
-								GetInst().SetInnertileLenY(10); // in mm
+								GetInst().SetInnertileLenX(20); // in mm
+								GetInst().SetInnertileLenY(20); // in mm
 
 								GetInst().SetOutertileLenX(20);         // in mm
 								GetInst().SetOutertileLenY(20);         // in mm
 
-								GetInst().SetInnerabsoThickness(1); // in mm
-								GetInst().SetInnergapThickness(10); // in mm
+								GetInst().SetInnerabsoThickness(2);     // in mm
+								GetInst().SetInnergapThickness(5);      // in mm
 
-								GetInst().SetOuterabsoThickness(1); // in mm
-								GetInst().SetOutergapThickness(20); // in mm
+								GetInst().SetOuterabsoThickness(2); // in mm
+								GetInst().SetOutergapThickness(5); // in mm
 
 								GetInst().SetPvesselThickness(20); //in mm
 

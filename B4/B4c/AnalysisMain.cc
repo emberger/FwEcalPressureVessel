@@ -37,24 +37,22 @@ int main(int argc, char * argv[]) {
 //    gStyle->SetLabelSize(0.04,"xy");
 //    gStyle->SetTitleOffset(1.3,"x");
 //    gStyle->SetTitleOffset(1.3,"y");
-        // TROOTAnalysis A;
-        // A.CalcAngularResolution(argv[1], argv[2]);
 
-        Double_t cut=0.0 /*std::stod(argv[1])*/;
-        Double_t distance=1000/*std::stod(argv[2])*/;
+        
+        Double_t cut=std::stod(argv[1]);
+        Double_t distance=std::stod(argv[2]);
+        std::string treepath= argv[3];
 
 
         std::unique_ptr<TChain> ch1(new TChain("eventTree"));
 
-        std::string treepath= argv[3];
         //std::cout<<argv[3]<<std::endl;
-        ch1->Add("Tree.root");
+        ch1->Add(treepath.c_str());
         ch1->Draw("");
         //std::cout<<"hello"<<std::endl;
         TROOTAnalysis A(ch1,distance);
 
-
-        //A.SetPathandFilename(argv[4], argv[5]);
+        A.SetPath(argv[4]);
 
 
         Double_t entries=A.GetNofEntries();
@@ -90,22 +88,22 @@ int main(int argc, char * argv[]) {
                 A.ApplyCut(cut);
                 //A.PrintEdep();
                 if(A.PCAEvent(i)) {
-                //        A.flg=false;
+                        //        A.flg=false;
 
 
-                //        TVector3 direction=A.EstimatePhoton1[eventA].second.Unit();
+                        //        TVector3 direction=A.EstimatePhoton1[eventA].second.Unit();
 
                         //std::cout<<"Direction: "<<std::endl;
-                //        hx->Fill(direction.X());
-                //        hy->Fill(direction.Y());
-                //        hz->Fill(direction.Z());
+                        //        hx->Fill(direction.X());
+                        //        hy->Fill(direction.Y());
+                        //        hz->Fill(direction.Z());
                         // A.CalcCOGPion(eventA);
                         // A.FitCOGsPion(eventA);
 
                         A.flg=true;
 
-                        // A.CalcCOGPion(eventA);
-                        // A.FitCOGsPion(eventA);
+                        A.CalcCOGPion(eventA);
+                        A.FitCOGsPion(eventA);
 
                         A.PlotProjection(distance, eventA);
 
@@ -125,10 +123,10 @@ int main(int argc, char * argv[]) {
 
 
 
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-        std::cout << "Computing took "
-                  << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
-                  <<" milliseconds"<<std::endl;
+        // std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+        // std::cout << "Computing took "
+        //           << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
+        //           <<" milliseconds"<<std::endl;
 
 
         // TF1 *f1 = new TF1("f1","gaus",-1,1);
@@ -147,7 +145,7 @@ int main(int argc, char * argv[]) {
         // //hz->Fit(f1, "L", "", -1,1);
         // hz->Draw();
 
-        A.DrawHists();
+      A.DrawHists();
 
         // end = std::chrono::steady_clock::now();
         // std::cout << "Computing took "
