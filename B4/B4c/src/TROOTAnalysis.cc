@@ -626,7 +626,7 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 
                 std::tuple<Double_t, Double_t, Double_t> hit=std::make_tuple(std::get<2>(hitnormal), std::get<1>(hitnormal), std::get<0>(hitnormal));
 
-                Double_t weight=Cevent->Hit(i)->EnergyDeposit();
+                Double_t weight=TMath::Log(Cevent->Hit(i)->EnergyDeposit()+1);
                 //Double_t weight= 1.;
 
                 Double_t x=(std::get<0>(hit)-showerCOG.at(0))*weight;
@@ -1118,13 +1118,13 @@ void TROOTAnalysis::DrawHists(){
 
         std::string save;
 
-        save=savepath+"/ROOT/PCA"+filename+".root";
+        save=savepath+"/ROOT/PCAlogE_"+filename+".root";
         projectionCPCA->Print(save.c_str());
 
-        save=savepath+"/C/PCA"+filename+".C";
+        save=savepath+"/C/PCAlogE_"+filename+".C";
         projectionCPCA->Print(save.c_str());
 
-        save=savepath+"/PDF/PCA"+filename+".pdf";
+        save=savepath+"/PDF/PCAlogE_"+filename+".pdf";
         projectionCPCA->Print(save.c_str());
 
 
@@ -1148,13 +1148,13 @@ void TROOTAnalysis::DrawHists(){
         angledifferenceCPCA->cd(0);
         angledifference_pca->Draw("colz");
 
-        save=savepath+"/ROOT/PCA"+filename+".root";
+        save=savepath+"/ROOT/PCAlogE_"+filename+".root";
         angledifferenceCPCA->Print(save.c_str());
 
-        save=savepath+"/C/PCA"+filename+".C";
+        save=savepath+"/C/PCAlogE_"+filename+".C";
         angledifferenceCPCA->Print(save.c_str());
 
-        save=savepath+"/PDF/PCA"+filename+".pdf";
+        save=savepath+"/PDF/PCAlogE_"+filename+".pdf";
         angledifferenceCPCA->Print(save.c_str());
 
         angledifferenceCODR->cd(0);

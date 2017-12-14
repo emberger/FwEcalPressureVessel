@@ -4,7 +4,7 @@ int main(int argc, char * argv[]) {
 
   PlotQuantiles P;
 
-  P.Plot(argv[1]);
+  P.Plot(argv[1], argv[2]);
 
 
 

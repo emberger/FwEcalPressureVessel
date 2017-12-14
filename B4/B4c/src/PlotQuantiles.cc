@@ -1,7 +1,7 @@
 #include "PlotQuantiles.hh"
 
 
-void PlotQuantiles::Plot(std::string path){
+void PlotQuantiles::Plot(std::string path, std::string tag){
 
 TCanvas * ca1p=new TCanvas("c2p","c2p");
 
@@ -13,7 +13,8 @@ std::string fileName;
 
 for(Int_t i = 0; i<10; i++) {
 
-        fileName=path+"/PCAAngledifference_E:"+std::to_string(Estart)+"MeV_.root";
+        fileName=path+"/PCAlogE_Angledifference_E:"+std::to_string(Estart)+"MeV_.root";
+
         // std::cout<<t<<std::endl;
         // std::string it=t.path().string();
         // std::string filename=it.substr(it.find_last_of("/\\")+1);
@@ -36,7 +37,7 @@ std::cout<<quantilePos<<std::endl;
 }
 
 Estart=1500;
-fileName=path+"/PCAAngledifference_E:"+std::to_string(Estart)+"MeV_.root";
+fileName=path+"/PCAlogE_Angledifference_E:"+std::to_string(Estart)+"MeV_.root";
 
 TFile * f1p=new TFile(fileName.c_str());
 TCanvas * c1p =(TCanvas*)f1p->Get("angledifferenceCPCA");
@@ -52,9 +53,8 @@ RmsXp[10]=quantilePos;
 Xp[10]=Estart;
 
 TGraph * g1p = new TGraph(11, Xp, RmsXp);
-std::string title="Res";
 
-std::string plottitle=title+"_68Quantile_PCA";
+std::string plottitle=tag+"_68Quantile_PCA";
 
 g1p->SetTitle(plottitle.c_str());
 
@@ -71,13 +71,13 @@ gStyle->SetOptFit();
 ca1p->cd(0);
 g1p->Draw("A*");
 
-std::string pathp=path+"/"+title+"PCA_68Quantil.root";
+std::string pathp=path+"/"+tag+"_PCA_68Quantil.root";
 ca1p->Print(pathp.c_str());
 
-pathp=path+"/"+title+"PCA_68Quantil.C";
+pathp=path+"/"+tag+"_PCA_68Quantil.C";
 ca1p->Print(pathp.c_str());
 
-pathp=path+"/"+title+"PCA_68Quantil.pdf";
+pathp=path+"/"+tag+"_PCA_68Quantil.pdf";
 ca1p->Print(pathp.c_str());
 
 }
