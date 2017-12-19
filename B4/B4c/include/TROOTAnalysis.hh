@@ -66,6 +66,7 @@ Int_t GetNofEntries();
 Bool_t PCAEvent(Int_t event);
 
 void ApplyCut(Double_t c);
+Bool_t RejectOutliers(Int_t event, Double_t radius, Double_t fraction);
 void PrintEdep();
 void ResSummary();
 void CalcAngularResolution(std::string pth, std::string title);
@@ -96,6 +97,10 @@ private:
 std::unique_ptr<TRandom3> rndGen;
 
 B4ROOTEvent * Cevent;
+
+Int_t NofRejectedHits;
+Double_t CurrentRadius;
+
 
 Int_t nofEntries;     // number of events in Tree
 

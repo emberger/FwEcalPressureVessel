@@ -127,6 +127,8 @@ B4ROOTHit::B4ROOTHit() : TObject() {
 								m_EnergyDeposit = 0;
 								m_calorimeterPart.clear();
 
+								m_radiusWeight=1;
+
 
 
 
@@ -139,6 +141,7 @@ B4ROOTHit::B4ROOTHit(const B4ROOTHit& orig) : TObject(orig) {
 
 								m_EnergyDeposit = orig.m_EnergyDeposit;
 								m_calorimeterPart=orig.m_calorimeterPart;
+								m_radiusWeight=orig.m_radiusWeight;
 
 }
 

@@ -21,9 +21,9 @@ XAngIncrement=0.
 AngIiterations=1
 
 
-foldername=AngReso_IT20_OT20_40Inner_50Outer_lead2mm_Polystyrene5mm_20mmSteelVessel  #folder containing .root files
+foldername=AngReso_IT20_OT20_Ogapfirst_25Inner_50Outer_lead1mm_Polystyrene5mm_14mmTitanVessel  #folder containing .root files
 
- mkdir $foldername
+ mkdir ~/Geant4/Data/ForwardEcalWithPressureVessel/AngularResolution_OutlierRejection/$foldername
 
  sed -i "19 s%^/run/beamOn.*%/run/beamOn $eventsPerEnergy%" GeantSim.mac
  sed -i "15 s%^/gun/position.*%/gun/position $XPos $YPos $ZPos mm%" GeantSim.mac
@@ -55,7 +55,7 @@ foldername=AngReso_IT20_OT20_40Inner_50Outer_lead2mm_Polystyrene5mm_20mmSteelVes
 
              #echo $s
 
-             mv Tree.root ./$s
+             mv Tree.root ~/Geant4/Data/ForwardEcalWithPressureVessel/AngularResolution_OutlierRejection/$s
 
              let en=en+$increment
              let EnCOUNTER=EnCOUNTER+1
@@ -74,11 +74,16 @@ EnIterations=1
 increment=500
 eventsPerEnergy=5000
 
+Xangle=0.4     #starting angles
+Yangle=0.4
+Zangle=1.0
+
 sed -i "19 s%^/run/beamOn.*%/run/beamOn $eventsPerEnergy%" GeantSim.mac
 
     while [ $AngCOUNTER -lt $AngIiterations ]; do
 
         sed -i "16 s%^/gun/direction.*%/gun/direction $Xangle $Yangle $Zangle%" GeantSim.mac
+
 
         EnCOUNTER=0
         en=$Sen
@@ -103,7 +108,7 @@ sed -i "19 s%^/run/beamOn.*%/run/beamOn $eventsPerEnergy%" GeantSim.mac
 
             #echo $s
 
-            mv Tree.root ./$s
+            mv Tree.root ~/Geant4/Data/ForwardEcalWithPressureVessel/AngularResolution_OutlierRejection/$s
 
             let en=en+$increment
             let EnCOUNTER=EnCOUNTER+1
@@ -117,7 +122,7 @@ sed -i "19 s%^/run/beamOn.*%/run/beamOn $eventsPerEnergy%" GeantSim.mac
 done
 
 
-FILES=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c/$foldername
+FILES=~/Geant4/Data/ForwardEcalWithPressureVessel/AngularResolution_OutlierRejection/$foldername
 ANALYSIS=$FILES/Analysis
 
 mkdir $ANALYSIS
@@ -141,5 +146,5 @@ do
 
 done
 
-#./AngularResolution $FILES/Analysis/ROOT Res
+./AngularResolution $FILES/Analysis/ROOT Res
 ./PlotQuantiles $FILES/Analysis/ROOT Res

@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
 //    gStyle->SetTitleOffset(1.3,"x");
 //    gStyle->SetTitleOffset(1.3,"y");
 
-        
+
         Double_t cut=std::stod(argv[1]);
         Double_t distance=std::stod(argv[2]);
         std::string treepath= argv[3];
@@ -88,19 +88,19 @@ int main(int argc, char * argv[]) {
                 A.ApplyCut(cut);
                 //A.PrintEdep();
                 if(A.PCAEvent(i)) {
-                        //        A.flg=false;
 
+                        Bool_t donerejection=false;
+                        
+                        while(!donerejection) {
 
-                        //        TVector3 direction=A.EstimatePhoton1[eventA].second.Unit();
+                                donerejection=A.RejectOutliers(i, 100, 0.2);
 
-                        //std::cout<<"Direction: "<<std::endl;
-                        //        hx->Fill(direction.X());
-                        //        hy->Fill(direction.Y());
-                        //        hz->Fill(direction.Z());
-                        // A.CalcCOGPion(eventA);
-                        // A.FitCOGsPion(eventA);
+                                if(!donerejection) {
 
-                        A.flg=true;
+                                        A.PCAEvent(i);
+
+                                }
+                        }
 
                         A.CalcCOGPion(eventA);
                         A.FitCOGsPion(eventA);
@@ -145,7 +145,7 @@ int main(int argc, char * argv[]) {
         // //hz->Fit(f1, "L", "", -1,1);
         // hz->Draw();
 
-      A.DrawHists();
+        A.DrawHists();
 
         // end = std::chrono::steady_clock::now();
         // std::cout << "Computing took "

@@ -60,6 +60,8 @@ TROOTAnalysis::TROOTAnalysis(std::unique_ptr<TChain> &ch,Double_t prodist) :
         true_direction = Cevent->MomentumPh1();
         true_energy = Cevent->EnergyPrimary();
 
+        NofRejectedHits=0;
+
         // std::cout<<"Absorber thickness is "<<AbsoThickness<<"mm"<<std::endl;
         // std::cout<<"Scintillator thickness is "<<GapThickness<<"mm"<<std::endl;
         // std::cout<<"Tilesize is "<<tiledimX<<"*"<<tiledimY<<"mm^2"<<std::endl;
@@ -626,7 +628,7 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 
                 std::tuple<Double_t, Double_t, Double_t> hit=std::make_tuple(std::get<2>(hitnormal), std::get<1>(hitnormal), std::get<0>(hitnormal));
 
-                Double_t weight=TMath::Log(Cevent->Hit(i)->EnergyDeposit()+1);
+                Double_t weight=Cevent->Hit(i)->EnergyDeposit()*Cevent->Hit(i)->RadiusWeight();
                 //Double_t weight= 1.;
 
                 Double_t x=(std::get<0>(hit)-showerCOG.at(0))*weight;
@@ -690,11 +692,53 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 
 
 }
+
+
+//---------------------------------------------------------------------------------------------------------------
+
+Bool_t TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fraction){
+
+        if(!CurrentRadius){
+          CurrentRadius=radius;
+        }
+        else{
+          CurrentRadius -= 1;
+        }
+
+        EcalTree->GetEntry(event);         //grab event from tree
+
+        Int_t nhits=Cevent->NHits();
+
+        if((NofRejectedHits/nhits) < fraction) {
+
+                for(Int_t i =0; i<nhits; i++) {
+
+                        TVector3 hitpos(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z());
+
+                        TVector3 pcadirection=EstimatePhoton1[event].second.Unit();
+
+                        TVector3 distance_vector=(EstimatePhoton1[event].first - hitpos)-((EstimatePhoton1[event].first - hitpos)*pcadirection)*pcadirection;
+
+                        Double_t distance=distance_vector.Mag();
+
+                        Cevent->Hit(i)->SetRadiusWeight(distance);
+
+                        if(distance>CurrentRadius) {
+                                Cevent->Hit(i)->SetEnergyDeposit(0.0);
+                                NofRejectedHits++;
+                        }
+
+                }
+                return false;
+        }
+        else{
+                return true;
+        }
+}
+
 //--------------------------------------------------------------------------------------------------------------
 
 void TROOTAnalysis::CalcCOGPion(Int_t event){            //calculate vector of (X,Y) tuples containing layerwise center of gravity
-
-
 
         // Variables for fit
         Double_t xerr=0;

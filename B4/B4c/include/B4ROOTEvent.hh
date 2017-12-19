@@ -26,6 +26,8 @@ std::string m_calorimeterPart;
 
 Double_t m_EnergyDeposit;
 
+Double_t m_radiusWeight;
+
 
 public:
 B4ROOTHit();
@@ -51,6 +53,10 @@ Double_t EnergyDeposit() const {
 								return m_EnergyDeposit;
 }
 
+Double_t RadiusWeight() const {
+								return m_radiusWeight;
+}
+
 // Setters:
 
 void SetCoordinates(Double_t x, Double_t y, Double_t z) {
@@ -63,6 +69,13 @@ void SetCalorimeterPart(std::string s){
 void SetEnergyDeposit(Double_t dep) {
 								m_EnergyDeposit = dep;
 }
+
+void SetRadiusWeight(Double_t rad){
+
+								m_radiusWeight=1/rad;
+
+}
+
 ClassDef(B4ROOTHit,1)
 };
 
@@ -171,7 +184,7 @@ Double_t calsizeXY(){
 }
 
 Double_t PVesselThickness(){
-	return m_PVesselThickness;
+								return m_PVesselThickness;
 }
 
 Double_t EnergyPrimary(){
@@ -249,7 +262,7 @@ void SetOuterAbsFirst(Bool_t cfg){
 }
 
 void SetPVesselThickness(Double_t pt){
-	m_PVesselThickness=pt;
+								m_PVesselThickness=pt;
 }
 
 void SetcalsizeXY(Double_t cxy){

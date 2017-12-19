@@ -206,7 +206,7 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
         auto absorberMaterial = G4Material::GetMaterial("G4_Pb");
         auto gapMaterial = G4Material::GetMaterial("G4_POLYSTYRENE");
 
-        auto PVesselMaterial = G4Material::GetMaterial("Steel");
+        auto PVesselMaterial = G4Material::GetMaterial("G4_Ti");
 
         if ( !defaultMaterial || !absorberMaterial || !gapMaterial ) {
                 G4ExceptionDescription msg;
