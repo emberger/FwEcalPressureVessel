@@ -177,9 +177,33 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o.provides: B4c/CMakeFile
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o.provides.build: B4c/CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o
 
 
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/EResShowerProf.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/EResShowerProf.cc
+
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.i"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/EResShowerProf.cc > CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.i
+
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.s"
+	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/EResShowerProf.cc -o CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.s
+
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.requires:
+
+.PHONY : B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.requires
+
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.provides: B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.requires
+	$(MAKE) -f B4c/CMakeFiles/AngularResolution.dir/build.make B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.provides.build
+.PHONY : B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.provides
+
+B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.provides.build: B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o
+
+
 B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cTrackingAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cTrackingAction.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.i: cmake_force
@@ -203,7 +227,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o.provides.build: 
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cTrackInformation.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cTrackInformation.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.i: cmake_force
@@ -227,7 +251,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o.provides.build
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4ROOTEvent.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4ROOTEvent.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.i: cmake_force
@@ -251,7 +275,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o.provides.build: B4c/CM
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cDetectorConstruction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cDetectorConstruction.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.i: cmake_force
@@ -275,7 +299,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cDetectorConstruction.cc.o.provides.b
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cReadoutGeometry.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cReadoutGeometry.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.i: cmake_force
@@ -299,7 +323,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cReadoutGeometry.cc.o.provides.build:
 
 B4c/CMakeFiles/AngularResolution.dir/src/Minimizer.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/Minimizer.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/Minimizer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/Minimizer.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/Minimizer.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/Minimizer.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/Minimizer.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/Minimizer.cc.i: cmake_force
@@ -323,7 +347,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/Minimizer.cc.o.provides.build: B4c/CMak
 
 B4c/CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/CalcAngularRes.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/CalcAngularRes.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.i: cmake_force
@@ -347,7 +371,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/CalcAngularRes.cc.o.provides.build: B4c
 
 B4c/CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/RootClasses_dict.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/RootClasses_dict.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.i: cmake_force
@@ -371,7 +395,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/RootClasses_dict.cc.o.provides.build: B
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cPionManager.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cPionManager.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.i: cmake_force
@@ -395,7 +419,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cPionManager.cc.o.provides.build: B4c
 
 B4c/CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/PlotQuantiles.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/PlotQuantiles.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.i: cmake_force
@@ -419,7 +443,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/PlotQuantiles.cc.o.provides.build: B4c/
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cEventAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cEventAction.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.i: cmake_force
@@ -443,7 +467,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cEventAction.cc.o.provides.build: B4c
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cDetParams.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cDetParams.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.i: cmake_force
@@ -467,7 +491,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cDetParams.cc.o.provides.build: B4c/C
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4PrimaryGeneratorAction.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4PrimaryGeneratorAction.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.i: cmake_force
@@ -491,7 +515,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4PrimaryGeneratorAction.cc.o.provides.
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorHit.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorHit.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.i: cmake_force
@@ -515,7 +539,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorHit.cc.o.provides.build: B4c/CM
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorimeterSD.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cCalorimeterSD.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.i: cmake_force
@@ -539,7 +563,7 @@ B4c/CMakeFiles/AngularResolution.dir/src/B4cCalorimeterSD.cc.o.provides.build: B
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cActionInitialization.cc.o: B4c/CMakeFiles/AngularResolution.dir/flags.make
 B4c/CMakeFiles/AngularResolution.dir/src/B4cActionInitialization.cc.o: /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cActionInitialization.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cActionInitialization.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object B4c/CMakeFiles/AngularResolution.dir/src/B4cActionInitialization.cc.o"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/AngularResolution.dir/src/B4cActionInitialization.cc.o -c /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4/B4c/src/B4cActionInitialization.cc
 
 B4c/CMakeFiles/AngularResolution.dir/src/B4cActionInitialization.cc.i: cmake_force
@@ -568,6 +592,7 @@ AngularResolution_OBJECTS = \
 "CMakeFiles/AngularResolution.dir/src/TROOTAnalysis.cc.o" \
 "CMakeFiles/AngularResolution.dir/src/B4RunAction.cc.o" \
 "CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o" \
+"CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o" \
 "CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o" \
 "CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o" \
 "CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o" \
@@ -593,6 +618,7 @@ B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/PCAToy.cc.o
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/TROOTAnalysis.cc.o
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/B4RunAction.cc.o
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o
+B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o
@@ -670,7 +696,7 @@ B4c/AngularResolution: /remote/pcilc7/software/Geant4_10.3.3/geant4.10.03.p03-in
 B4c/AngularResolution: /remote/pcilc7/software/Geant4_10.3.3/geant4.10.03.p03-install/lib/libG4global.so
 B4c/AngularResolution: /remote/pcilc7/software/Geant4_10.3.3/geant4.10.03.p03-install/lib/libG4clhep.so
 B4c/AngularResolution: B4c/CMakeFiles/AngularResolution.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable AngularResolution"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking CXX executable AngularResolution"
 	cd /home/iwsatlas1/emberger/Geant4/Current/ForwardEcalWithPressureVessel/B4-build/B4c && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/AngularResolution.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -683,6 +709,7 @@ B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.
 B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/TROOTAnalysis.cc.o.requires
 B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/B4RunAction.cc.o.requires
 B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o.requires
+B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o.requires
 B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o.requires
 B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o.requires
 B4c/CMakeFiles/AngularResolution.dir/requires: B4c/CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o.requires

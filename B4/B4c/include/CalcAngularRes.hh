@@ -57,18 +57,17 @@
 
 
 
-class AngularResolution{
+class AngularResolution {
 
 public:
-
-  void CalcAngularResolution(std::string pth, std::string title);
-  void EresAndShowerprofile(std::string pth);
+void CalcAngularResolution(std::string pth, std::string title);
+void EresAndShowerprofile(std::string pth);
 
 
 
 
 private:
 
-  Int_t nofEvents;
+Int_t nofEvents;
 
 };

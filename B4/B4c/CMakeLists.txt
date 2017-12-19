@@ -83,11 +83,14 @@ add_executable(exampleB4c exampleB4c.cc ${sources} ${headers})
 add_executable(Analysis AnalysisMain.cc ${sources} ${headers})
 add_executable(AngularResolution AngularResolution.cc ${sources} ${headers})
 add_executable(PlotQuantiles PlotQuantiles.cc ${sources} ${headers})
+add_executable(EResAndShowerprofile EResAndShowerprofile.cc ${sources} ${headers})
 
 target_link_libraries(exampleB4c ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
 target_link_libraries(Analysis  ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )#RootLib)
 target_link_libraries(AngularResolution ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )# ${Boost_FILESYSTEM_LIBRARY} ${Boost_SYSTEM_LIBRARY})
-target_link_libraries(PlotQuantiles ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} )
+target_link_libraries(PlotQuantiles ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
+target_link_libraries(EResAndShowerprofile ${Geant4_LIBRARIES} ${ROOT_LIBRARIES})
+
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we
@@ -120,5 +123,5 @@ install(TARGETS exampleB4c DESTINATION bin)
 install(TARGETS AngularResolution DESTINATION bin)
 install(TARGETS Analysis DESTINATION bin)
 install(TARGETS PlotQuantiles DESTINATION bin)
-
+install(TARGETS EResAndShowerprofile DESTINATION bin)
 

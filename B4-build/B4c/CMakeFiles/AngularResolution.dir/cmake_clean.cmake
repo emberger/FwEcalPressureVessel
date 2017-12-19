@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/AngularResolution.dir/src/TROOTAnalysis.cc.o"
   "CMakeFiles/AngularResolution.dir/src/B4RunAction.cc.o"
   "CMakeFiles/AngularResolution.dir/src/B4cDummySD.cc.o"
+  "CMakeFiles/AngularResolution.dir/src/EResShowerProf.cc.o"
   "CMakeFiles/AngularResolution.dir/src/B4cTrackingAction.cc.o"
   "CMakeFiles/AngularResolution.dir/src/B4cTrackInformation.cc.o"
   "CMakeFiles/AngularResolution.dir/src/B4ROOTEvent.cc.o"

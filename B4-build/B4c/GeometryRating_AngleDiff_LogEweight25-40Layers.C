@@ -1,7 +1,7 @@
 {
 //=========Macro generated from canvas: GeometryRating/GeometryRating
-//=========  (Thu Dec 14 15:48:33 2017) by ROOT version5.34/36
-   TCanvas *GeometryRating = new TCanvas("GeometryRating", "GeometryRating",0,0,700,500);
+//=========  (Tue Dec 19 10:22:24 2017) by ROOT version5.34/36
+   TCanvas *GeometryRating = new TCanvas("GeometryRating", "GeometryRating",65,52,700,500);
    GeometryRating->Range(-205.625,-0.325,1850.625,0.925);
    GeometryRating->SetFillColor(0);
    GeometryRating->SetBorderMode(0);
@@ -460,7 +460,7 @@
    entry->SetTextFont(42);
    leg->Draw();
    
-   TPaveText *pt = new TPaveText(0.4397126,0.9339831,0.5602874,0.995,"blNDC");
+   TPaveText *pt = new TPaveText(0.4398567,0.9342405,0.5601433,0.995,"blNDC");
    pt->SetName("title");
    pt->SetBorderSize(0);
    pt->SetFillColor(0);

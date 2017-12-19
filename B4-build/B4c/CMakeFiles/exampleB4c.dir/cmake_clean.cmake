@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/exampleB4c.dir/src/TROOTAnalysis.cc.o"
   "CMakeFiles/exampleB4c.dir/src/B4RunAction.cc.o"
   "CMakeFiles/exampleB4c.dir/src/B4cDummySD.cc.o"
+  "CMakeFiles/exampleB4c.dir/src/EResShowerProf.cc.o"
   "CMakeFiles/exampleB4c.dir/src/B4cTrackingAction.cc.o"
   "CMakeFiles/exampleB4c.dir/src/B4cTrackInformation.cc.o"
   "CMakeFiles/exampleB4c.dir/src/B4ROOTEvent.cc.o"
