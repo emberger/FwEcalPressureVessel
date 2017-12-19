@@ -91,7 +91,7 @@ int main(int argc, char * argv[]) {
                         Bool_t donerejection=false;
 
                         while(!donerejection) {
-                                std::cout<<"iteration"<<std::endl;
+                                //std::cout<<"iteration"<<std::endl;
                                 donerejection=A.RejectOutliers(i, 100, 0.2);
 
                                 if(!donerejection) {

@@ -721,6 +721,8 @@ Bool_t TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fracti
 
                         Double_t distance=distance_vector.Mag();
 
+                        std::cout<<distance<<std::endl;
+
                         Cevent->Hit(i)->SetRadiusWeight(distance);
 
                         if(distance>CurrentRadius) {
