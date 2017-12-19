@@ -100,6 +100,7 @@ B4ROOTEvent * Cevent;
 
 Int_t NofRejectedHits;
 Double_t CurrentRadius;
+Bool_t set=false;
 
 
 Int_t nofEntries;     // number of events in Tree

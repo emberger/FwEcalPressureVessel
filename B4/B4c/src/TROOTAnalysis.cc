@@ -698,10 +698,11 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 
 Bool_t TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fraction){
 
-        if(!CurrentRadius){
+        if(set==false){
           CurrentRadius=radius;
+          set=true;
         }
-        else{
+        else if(set==true){
           CurrentRadius -= 1;
         }
         std::cout<<"currentradius: "<<CurrentRadius<<std::endl;
