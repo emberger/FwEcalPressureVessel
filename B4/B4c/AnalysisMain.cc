@@ -54,7 +54,6 @@ int main(int argc, char * argv[]) {
 
         A.SetPath(argv[4]);
 
-
         Double_t entries=A.GetNofEntries();
 
         Int_t eventA=0;
@@ -90,9 +89,9 @@ int main(int argc, char * argv[]) {
                 if(A.PCAEvent(i)) {
 
                         Bool_t donerejection=false;
-                        
-                        while(!donerejection) {
 
+                        while(!donerejection) {
+                                std::cout<<"iteration"<<std::endl;
                                 donerejection=A.RejectOutliers(i, 100, 0.2);
 
                                 if(!donerejection) {
