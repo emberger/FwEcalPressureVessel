@@ -704,7 +704,7 @@ Bool_t TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fracti
         else{
           CurrentRadius -= 1;
         }
-
+        std::cout<<"currentradius: "<<CurrentRadius<<std::endl;
         EcalTree->GetEntry(event);         //grab event from tree
 
         Int_t nhits=Cevent->NHits();
@@ -726,6 +726,7 @@ Bool_t TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fracti
                         Cevent->Hit(i)->SetRadiusWeight(distance);
 
                         if(distance>CurrentRadius) {
+                                std::cout<<"rejected"<<std::endl;
                                 Cevent->Hit(i)->SetEnergyDeposit(0.0);
                                 NofRejectedHits++;
                         }
