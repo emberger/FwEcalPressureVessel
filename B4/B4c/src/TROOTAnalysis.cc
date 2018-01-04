@@ -139,15 +139,16 @@ Int_t TROOTAnalysis::GetNofEntries(){
         return nofEntries;
 }
 
-void TROOTAnalysis::ApplyCut(Double_t c){
+void TROOTAnalysis::ApplySmearingAndCut(Double_t c, Double_t mean, Double_t sig){
 
         for(Int_t i; i<Cevent->NHits(); i++) {
+                Double_t smear=rndGen->Gaus(mean, sig);
+                Double_t smearedenergy=Cevent->Hit(i)->EnergyDeposit()+smear;
+                Cevent->Hit(i)->SetEnergyDeposit(smearedenergy);
+
 
                 if(Cevent->Hit(i)->EnergyDeposit() < c) {
-
                         Cevent->Hit(i)->SetEnergyDeposit(0.);
-
-
                 }
 
         }
@@ -695,49 +696,53 @@ Bool_t TROOTAnalysis::PCAEvent(Int_t event){
 
 
 //---------------------------------------------------------------------------------------------------------------
+void TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fraction){
 
-Bool_t TROOTAnalysis::RejectOutliers(Int_t event,Double_t radius,Double_t fraction){
-
-        if(set==false){
-          CurrentRadius=radius;
-          set=true;
-        }
-        else if(set==true){
-          CurrentRadius -= 1;
-        }
+        // if(set==false){
+        CurrentRadius=radius;
+        //   set=true;
+        // }
+        // else if(set==true){
+        //   CurrentRadius -= 1;
+        // }
         std::cout<<"currentradius: "<<CurrentRadius<<std::endl;
         EcalTree->GetEntry(event);         //grab event from tree
 
         Int_t nhits=Cevent->NHits();
 
-        if((NofRejectedHits/nhits) < fraction) {
+        //  if((NofRejectedHits/nhits) < fraction) {
 
-                for(Int_t i =0; i<nhits; i++) {
+        for(Int_t i =0; i<nhits; i++) {
 
-                        TVector3 hitpos(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z());
+                auto hitnormal=TransformCoordinates(Cevent->Hit(i)->X(), Cevent->Hit(i)->Y(), Cevent->Hit(i)->Z(), Cevent->Hit(i)->CalorimeterPart());
 
-                        TVector3 pcadirection=EstimatePhoton1[event].second.Unit();
+                TVector3 hitpos(std::get<0>(hitnormal), std::get<1>(hitnormal), std::get<2>(hitnormal));
 
-                        TVector3 distance_vector=(EstimatePhoton1[event].first - hitpos)-((EstimatePhoton1[event].first - hitpos)*pcadirection)*pcadirection;
+                TVector3 pcadirection=EstimatePhoton1[event].second.Unit();
 
-                        Double_t distance=distance_vector.Mag();
+                pcadirection.Print();
 
-                        std::cout<<distance<<std::endl;
+                TVector3 distance_vector=(EstimatePhoton1[event].first - hitpos)-((EstimatePhoton1[event].first - hitpos)*pcadirection)*pcadirection;
 
-                        Cevent->Hit(i)->SetRadiusWeight(distance);
+                std::cout<<distance_vector.Dot(pcadirection)<<std::endl;
 
-                        if(distance>CurrentRadius) {
-                                std::cout<<"rejected"<<std::endl;
-                                Cevent->Hit(i)->SetEnergyDeposit(0.0);
-                                NofRejectedHits++;
-                        }
+                Double_t distance=distance_vector.Mag();
 
+                std::cout<<distance<<std::endl;
+
+                Cevent->Hit(i)->SetRadiusWeight(distance);
+
+                if(distance>CurrentRadius) {
+                        std::cout<<"rejected"<<std::endl;
+                        Cevent->Hit(i)->SetEnergyDeposit(0.0);
+                        NofRejectedHits++;
                 }
-                return false;
         }
-        else{
-                return true;
-        }
+        //         return false;
+        // }
+        // else{
+        //         return true;
+        // }
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -978,18 +983,18 @@ void TROOTAnalysis::FitCOGsPion(Int_t event){
 
         myfcn.SetCOGs(COGCollectionPH1[event]);
 
-        upar.Add("a_1", /*EstimatePhoton1[event].first.X()*/ 0., error_minimizer_parameters);
-        upar.Add("a_2", /*EstimatePhoton1[event].first.Y()*/ 0., error_minimizer_parameters);
-        upar.Add("a_3", /*EstimatePhoton1[event].first.Z()*/ 0., error_minimizer_parameters);
+        upar.Add("a_1", EstimatePhoton1[event].first.X(), error_minimizer_parameters);
+        upar.Add("a_2", EstimatePhoton1[event].first.Y(), error_minimizer_parameters);
+        upar.Add("a_3", EstimatePhoton1[event].first.Z(), error_minimizer_parameters);
 
         // upar.Fix("a_1");
         // upar.Fix("a_2");
         // upar.Fix("a_3");
 
         //std::cout<<"set COGPH1"<<std::endl;
-        upar.Add("v_1", /*EstimatePhoton1[event].second.X()*/ 0., error_minimizer_parameters);
-        upar.Add("v_2", /*EstimatePhoton1[event].second.Y()*/ 0., error_minimizer_parameters);
-        upar.Add("v_3", /*EstimatePhoton1[event].second.Z()*/ 1., error_minimizer_parameters);
+        upar.Add("v_1", EstimatePhoton1[event].second.X(), error_minimizer_parameters);
+        upar.Add("v_2", EstimatePhoton1[event].second.Y(), error_minimizer_parameters);
+        upar.Add("v_3", EstimatePhoton1[event].second.Z(), error_minimizer_parameters);
 
         //  upar.SetLimits("v_3", 0.6, 1.0);
         //cout << upar << endl;
@@ -1166,13 +1171,13 @@ void TROOTAnalysis::DrawHists(){
 
         std::string save;
 
-        save=savepath+"/ROOT/PCAlogE_"+filename+".root";
+        save=savepath+"/ROOT/PCA"+filename+".root";
         projectionCPCA->Print(save.c_str());
 
-        save=savepath+"/C/PCAlogE_"+filename+".C";
+        save=savepath+"/C/PCA"+filename+".C";
         projectionCPCA->Print(save.c_str());
 
-        save=savepath+"/PDF/PCAlogE_"+filename+".pdf";
+        save=savepath+"/PDF/PCA"+filename+".pdf";
         projectionCPCA->Print(save.c_str());
 
 
@@ -1196,13 +1201,13 @@ void TROOTAnalysis::DrawHists(){
         angledifferenceCPCA->cd(0);
         angledifference_pca->Draw("colz");
 
-        save=savepath+"/ROOT/PCAlogE_"+filename+".root";
+        save=savepath+"/ROOT/PCA"+filename+".root";
         angledifferenceCPCA->Print(save.c_str());
 
-        save=savepath+"/C/PCAlogE_"+filename+".C";
+        save=savepath+"/C/PCA"+filename+".C";
         angledifferenceCPCA->Print(save.c_str());
 
-        save=savepath+"/PDF/PCAlogE_"+filename+".pdf";
+        save=savepath+"/PDF/PCA"+filename+".pdf";
         angledifferenceCPCA->Print(save.c_str());
 
         angledifferenceCODR->cd(0);

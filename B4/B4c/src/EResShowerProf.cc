@@ -2,10 +2,18 @@
 #include "EResShowerProf.hh"
 
 
-void EResShowerProf::EResAndProfile(std::string pth){
+void EResShowerProf::EResAndProfile(Double_t cut, std::string pth){
 
         TCanvas * ca1=new TCanvas("c2p","c2p");
         Cevent=new B4ROOTEvent();
+
+        auto now = std::chrono::system_clock::now();
+        auto ms = std::chrono::time_point_cast<std::chrono::milliseconds>(now).time_since_epoch().count();
+        Int_t seed = ms;
+        std::unique_ptr<TRandom3> rndGen(new TRandom3(seed));
+        Double_t c=cut;
+        Double_t mean= 0;
+        Double_t sig=0.1;
 
 
 
@@ -31,18 +39,47 @@ void EResShowerProf::EResAndProfile(std::string pth){
                 EcalTree->SetBranchAddress("EventBranch", &Cevent);
 
 
-
                 std::unique_ptr<TCanvas> profileC(new TCanvas("profileC", "profileC"));
                 std::unique_ptr<TH1D> profile(new TH1D("showerprofile", "showerprofile",100, 0, 100));
 
                 std::unique_ptr<TH1D> edepdistribution(new TH1D("edep","edep",100,0,Estart));
 
+
+                Int_t eventcounter=0;
+                Int_t coutcounter=0;
+                Double_t encounter=0;
+
+
+
                 for(Int_t j=0; j<nofEvents; j++) {
+                  Double_t newGapEnergy=0;
 
-                        EcalTree->GetEntry(j); //grab event from tree
-                        Double_t Eges = Cevent->GapEnergy();
 
-                        edepdistribution->Fill(Eges);
+                        EcalTree->GetEntry(j);                   //grab event from tree
+                        eventcounter+=Cevent->NHits();
+                        for(Int_t l=0; l<Cevent->NHits(); l++) {
+
+                                Double_t smear=rndGen->Gaus(mean, sig);
+
+                                Double_t smearedenergy=Cevent->Hit(l)->EnergyDeposit()+smear;
+                                Cevent->Hit(l)->SetEnergyDeposit(smearedenergy);
+
+                                if(Cevent->Hit(l)->EnergyDeposit() < c) {
+                                        coutcounter++;
+                                        encounter+=Cevent->Hit(l)->EnergyDeposit();
+
+                                        Cevent->Hit(l)->SetEnergyDeposit(0.);
+                                }
+                                else if(Cevent->Hit(l)->EnergyDeposit()>= c) {
+                                        newGapEnergy+=Cevent->Hit(l)->EnergyDeposit();
+                                }
+                        }
+
+                        std::cout<<"average rejected hits: "<<coutcounter/nofEvents<<" of an average hitnumber of " <<eventcounter/nofEvents<<std::endl;
+                        std::cout<<"average rejected energy "<<encounter/nofEvents<<"MeV"<<std::endl;
+                        Cevent->SetGapEnergy(newGapEnergy);
+
+                        edepdistribution->Fill(newGapEnergy);
                         Int_t cnh = Cevent->NHits();
                         Double_t integral;
 
@@ -102,7 +139,7 @@ void EResShowerProf::EResAndProfile(std::string pth){
         }
         Estart=1500;
 
-        fileName=pth+"/gamma"+std::to_string(Estart)+"MeV_.4:.4_.root";
+        fileName=pth+"/gamma"+std::to_string(Estart)+"MeV_0.4:0.4_.root";
         std::unique_ptr<TChain> ch1(new TChain("eventTree"));
         ch1->Add(fileName.c_str());
         ch1->Draw("");
@@ -117,13 +154,47 @@ void EResShowerProf::EResAndProfile(std::string pth){
 
         std::unique_ptr<TH1D> edepdistribution(new TH1D("edep","edep",100,0,Estart));
 
-        for(Int_t j=0; j<nofEvents; j++) {
 
-                EcalTree->GetEntry(j); //grab event from tree
-                Double_t Eges = Cevent->GapEnergy();
-                edepdistribution->Fill(Eges);
+        Int_t eventcounter=0;
+        Int_t coutcounter=0;
+        Double_t encounter=0;
+
+
+
+        for(Int_t j=0; j<nofEvents; j++) {
+                  Double_t newGapEnergy=0;
+                EcalTree->GetEntry(j);             //grab event from tree
+                eventcounter+=Cevent->NHits();
+                for(Int_t l=0; l<Cevent->NHits(); l++) {
+
+
+                        Double_t smear=rndGen->Gaus(mean, sig);
+
+                        Double_t smearedenergy=Cevent->Hit(l)->EnergyDeposit()+smear;
+                        Cevent->Hit(l)->SetEnergyDeposit(smearedenergy);
+
+
+                        if(Cevent->Hit(l)->EnergyDeposit() < c) {
+                                coutcounter++;
+                                encounter+=Cevent->Hit(l)->EnergyDeposit();
+
+                                Cevent->Hit(l)->SetEnergyDeposit(0.);
+
+
+                        }
+                        else if(Cevent->Hit(l)->EnergyDeposit()>= c) {
+                                newGapEnergy+=Cevent->Hit(l)->EnergyDeposit();
+                        }
+                }
+
+                std::cout<<"average rejected hits: "<<coutcounter/nofEvents<<" of an average hitnumber of " <<eventcounter/nofEvents<<std::endl;
+                std::cout<<"average rejected energy "<<encounter/nofEvents<<"MeV"<<std::endl;
+                Cevent->SetGapEnergy(newGapEnergy);
+
+                edepdistribution->Fill(newGapEnergy);
                 Int_t cnh = Cevent->NHits();
                 Double_t integral;
+
 
                 for(Int_t i=0; i<Cevent->NumberOfInnerLayers(); i++) { //loop over all inner layers in event
                         std::string cp="InnerGapLV";

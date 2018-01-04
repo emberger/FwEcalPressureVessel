@@ -46,9 +46,11 @@ class EResShowerProf {
 
 public:
 
-void EResAndProfile(std::string pth);
+void EResAndProfile(Double_t cut, std::string pth);
 
 private:
+
+
 
 B4ROOTEvent * Cevent;
 

@@ -65,8 +65,8 @@ Int_t GetNofEntries();
 
 Bool_t PCAEvent(Int_t event);
 
-void ApplyCut(Double_t c);
-Bool_t RejectOutliers(Int_t event, Double_t radius, Double_t fraction);
+void ApplySmearingAndCut(Double_t c, Double_t mean, Double_t sig);
+void RejectOutliers(Int_t event, Double_t radius, Double_t fraction);
 void PrintEdep();
 void ResSummary();
 void CalcAngularResolution(std::string pth, std::string title);

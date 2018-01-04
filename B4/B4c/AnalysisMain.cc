@@ -84,22 +84,22 @@ int main(int argc, char * argv[]) {
 
                 A.EcalTree->GetEntry(i);
 
-                A.ApplyCut(cut);
+                A.ApplySmearingAndCut(cut, 0,0.1);
                 //A.PrintEdep();
                 if(A.PCAEvent(i)) {
 
-                        Bool_t donerejection=false;
-
-                        while(!donerejection) {
+                        // Bool_t donerejection=false;
+                        //
+                        // while(!donerejection) {
                                 //std::cout<<"iteration"<<std::endl;
-                                donerejection=A.RejectOutliers(i, 100, 0.2);
-
-                                if(!donerejection) {
+                              A.RejectOutliers(i, 100, 0.2);
+                                //
+                                // if(!donerejection) {
 
                                         A.PCAEvent(i);
-
-                                }
-                        }
+                        //
+                        //         }
+                        // }
 
                         A.CalcCOGPion(eventA);
                         A.FitCOGsPion(eventA);

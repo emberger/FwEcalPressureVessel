@@ -108,6 +108,7 @@ void B4cDetectorConstruction::DefineMaterials()
         nistManager->FindOrBuildMaterial("G4_Cu");
         nistManager->FindOrBuildMaterial("G4_POLYSTYRENE");
         nistManager->FindOrBuildMaterial("G4_Ti");
+        nistManager->FindOrBuildMaterial("G4_AIR");
 
 
         //BGO material
@@ -205,8 +206,8 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
         auto defaultMaterial = G4Material::GetMaterial("Galactic");
         auto absorberMaterial = G4Material::GetMaterial("G4_Pb");
         auto gapMaterial = G4Material::GetMaterial("G4_POLYSTYRENE");
-
-        auto PVesselMaterial = G4Material::GetMaterial("G4_Ti");
+        auto airMaterial = G4Material::GetMaterial("G4_AIR");
+        auto PVesselMaterial = G4Material::GetMaterial("Steel");
 
         if ( !defaultMaterial || !absorberMaterial || !gapMaterial ) {
                 G4ExceptionDescription msg;
@@ -337,6 +338,33 @@ G4VPhysicalVolume* B4cDetectorConstruction::DefineVolumes()
                 false,                     // no boolean operation
                 1,                         // copy number
                 fCheckOverlaps);        // checking overlaps
+        //
+        //AirGap
+        //
+
+        // auto AirGapS
+        //         = new G4Box("AirGap", // its name
+        //                     GetInst().GetcalorSizeXY()/2, GetInst().GetcalorSizeXY()/2, GetInst().GetairgapThickness()/2); // its size
+        //
+        // auto AirGapLV
+        //         = new G4LogicalVolume(
+        //         AirGapS,         // its solid
+        //         airMaterial, // its material
+        //         "AirGapLV");         // its name
+        //
+        //
+        // new G4PVPlacement(
+        //         0,                 // no rotation
+        //         G4ThreeVector(0., 0., -(GetInst().GetInnergapThickness()/2)),         // its position
+        //         AirGapLV,         // its logical volume
+        //         "AirGap",            // its name
+        //         AirGapLV,           // its mother  volume
+        //         false,             // no boolean operation
+        //         0,                 // copy number
+        //         fCheckOverlaps);         // checking overlaps
+
+
+
 
 
 

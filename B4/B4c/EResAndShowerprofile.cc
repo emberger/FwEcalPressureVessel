@@ -7,9 +7,10 @@ int main(int argc, char* argv[]){
 
         EResShowerProf E;
 
-        std::string p=argv[1];
+        std::string p=argv[2];
+        Double_t cut=std::stod(argv[1]);
 
-        E.EResAndProfile(p);
+        E.EResAndProfile(cut, p);
 
         return 0;
 }

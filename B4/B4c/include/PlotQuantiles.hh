@@ -44,7 +44,9 @@ class PlotQuantiles{
 
 public:
 
-  void Plot(std::string path, std::string tag);
+  void PlotPCA(std::string path, std::string tag);
+  void PlotODR(std::string path, std::string tag);
+
 
 private:
 

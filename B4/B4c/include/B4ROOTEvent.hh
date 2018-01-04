@@ -105,6 +105,8 @@ Double_t m_OutertilesizeX;
 Double_t m_OutertilesizeY;
 Bool_t Outerabsofirst;
 
+//Double_t m_airgapThickness
+
 Double_t m_calsizeXY;
 Double_t m_PVesselThickness;
 
@@ -178,6 +180,10 @@ Double_t OuterTilesizeY(){
 Bool_t GetOuterAbsFirst(){
 								return Outerabsofirst;
 }
+
+// Double_t airgapThickness(){
+// 								return m_airgapThickness;
+// }
 
 Double_t calsizeXY(){
 								return m_calsizeXY;
@@ -260,6 +266,11 @@ void SetOuterTilesizeY(Double_t tsY){
 void SetOuterAbsFirst(Bool_t cfg){
 								Outerabsofirst=cfg;
 }
+
+// void SetairgapThickness(Double_t agt)
+// {
+// 								m_airgapThickness=agt;
+// }
 
 void SetPVesselThickness(Double_t pt){
 								m_PVesselThickness=pt;
